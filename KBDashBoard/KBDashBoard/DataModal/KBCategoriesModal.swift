@@ -9,15 +9,16 @@ import Foundation
 
 
 
-struct KBModal: Codable{
+struct KBCategoriesModal: Codable{
     
-    let data: [KBModals]
+    let data: [KBCategoriesModals]
+    
     enum CodingKeys: String,CodingKey{
         case data
     }
 }
 
-struct KBModals: Codable{
+struct KBCategoriesModals: Codable{
     let isFollowing: Bool
     let articlesCount:String
     let articleViewType:String

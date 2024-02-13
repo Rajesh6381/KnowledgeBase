@@ -1,0 +1,6 @@
+framework module Pods_KBDashBoard {
+  umbrella header "Pods-KBDashBoard-umbrella.h"
+
+  export *
+  module * { export * }
+}
