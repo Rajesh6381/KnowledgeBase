@@ -1,3 +1,51 @@
-PODFILE CHECKSUM: 333ac3bd8b1a92a0c97cbe583b720a38fccd6e6e
+PODS:
+  - SwiftProtobuf (1.19.0)
+  - ZohoDeskPlatformDataBridge (1.0.13)
+  - ZohoDeskPlatformUIKit (1.0.13):
+    - SwiftProtobuf
+    - ZohoDeskPlatformDataBridge
+  - ZohoDeskPortalAPIKit (3.0.0)
+  - ZohoDeskPortalConfiguration (3.0.0):
+    - ZohoDeskPlatformDataBridge
+    - ZohoDeskPlatformUIKit
+    - ZohoDeskPortalAPIKit
+  - ZohoDeskPortalKB (3.0.0):
+    - ZohoDeskPlatformDataBridge
+    - ZohoDeskPlatformUIKit
+    - ZohoDeskPortalAPIKit
+    - ZohoDeskPortalConfiguration
+
+DEPENDENCIES:
+  - ZohoDeskPlatformDataBridge (from `/Users/rajesh-tt221/Documents/desk-platform-sdk-ios`)
+  - ZohoDeskPlatformUIKit (from `/Users/rajesh-tt221/Documents/desk-platform-sdk-ios`)
+  - ZohoDeskPortalAPIKit (from `/Users/rajesh-tt221/Documents/ASAP ios with platform`)
+  - ZohoDeskPortalConfiguration (from `/Users/rajesh-tt221/Documents/ASAP ios with platform`)
+  - ZohoDeskPortalKB (from `/Users/rajesh-tt221/Documents/ASAP ios with platform`)
+
+SPEC REPOS:
+  trunk:
+    - SwiftProtobuf
+
+EXTERNAL SOURCES:
+  ZohoDeskPlatformDataBridge:
+    :path: "/Users/rajesh-tt221/Documents/desk-platform-sdk-ios"
+  ZohoDeskPlatformUIKit:
+    :path: "/Users/rajesh-tt221/Documents/desk-platform-sdk-ios"
+  ZohoDeskPortalAPIKit:
+    :path: "/Users/rajesh-tt221/Documents/ASAP ios with platform"
+  ZohoDeskPortalConfiguration:
+    :path: "/Users/rajesh-tt221/Documents/ASAP ios with platform"
+  ZohoDeskPortalKB:
+    :path: "/Users/rajesh-tt221/Documents/ASAP ios with platform"
+
+SPEC CHECKSUMS:
+  SwiftProtobuf: 6ef3f0e422ef90d6605ca20b21a94f6c1324d6b3
+  ZohoDeskPlatformDataBridge: 920e26379522c789738ba35c703a8da8c63a8a66
+  ZohoDeskPlatformUIKit: 593d5da59a8dea8283966e91174c69d5acb7bc5b
+  ZohoDeskPortalAPIKit: bfafaab78ee9012d967b1f4089ac0fa0e1d8758a
+  ZohoDeskPortalConfiguration: 843525ff0c3789fc95b5e327f834b70f99a5ec4f
+  ZohoDeskPortalKB: 0d18dd07a7acf74e8bfea3cbd85e87adc79d5760
+
+PODFILE CHECKSUM: d2b9b173fa76dd18beafaf40f0b2d8aa4e802df5
 
 COCOAPODS: 1.15.2

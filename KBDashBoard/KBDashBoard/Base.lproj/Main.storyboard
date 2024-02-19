@@ -29,7 +29,7 @@
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <segue destination="nP5-6d-Fid" kind="show" id="RxF-3a-quO"/>
+                                            <action selector="nativeKB:" destination="BYZ-38-t0r" eventType="touchUpInside" id="015-V1-c7g"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8rP-0Y-aY7">
@@ -40,6 +40,9 @@
                                                 <color key="strokeColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </backgroundConfiguration>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="platformKBActions:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t6p-Ol-ym2"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -54,6 +57,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="W60-pB-lZK"/>
+                    <connections>
+                        <segue destination="nP5-6d-Fid" kind="show" id="pOH-nd-35R"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -62,14 +68,14 @@
         <!--Knowledge Base-->
         <scene sceneID="W6O-si-N6i">
             <objects>
-                <viewController storyboardIdentifier="CategoryStroyBoard" id="nP5-6d-Fid" customClass="ArticleCategoryViewController" customModule="KBDashBoard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ArticleCategoryStroyBoard" id="nP5-6d-Fid" customClass="ArticleCategoryViewController" customModule="KBDashBoard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YqG-uE-Hag">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="zc5-MZ-Smt">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="10" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="zc5-MZ-Smt">
                                 <rect key="frame" x="0.0" y="103" width="393" height="629"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.96470588450000005" green="0.96862745289999996" blue="0.98431372640000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </tableView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Se3-MT-eoA">
                                 <rect key="frame" x="0.0" y="732" width="393" height="120"/>
@@ -98,17 +104,51 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="zc5-MZ-Smt" id="4fA-2w-5NJ"/>
+                        <segue destination="dEF-Bj-hIX" kind="show" id="Cmy-BA-AdJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CNR-Hc-83M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2344.2748091603053" y="28.87323943661972"/>
         </scene>
+        <!--Article List View Controller-->
+        <scene sceneID="9wJ-AB-85K">
+            <objects>
+                <viewController storyboardIdentifier="ArticleList" id="dEF-Bj-hIX" customClass="ArticleListViewController" customModule="KBDashBoard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qAN-qz-bGW">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QIW-6z-cfH">
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                                <color key="backgroundColor" red="0.96470588450000005" green="0.97254902119999997" blue="0.98431372640000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="2L5-JO-11j"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="QIW-6z-cfH" firstAttribute="leading" secondItem="2L5-JO-11j" secondAttribute="leading" id="2RZ-db-6rp"/>
+                            <constraint firstItem="QIW-6z-cfH" firstAttribute="top" secondItem="2L5-JO-11j" secondAttribute="top" id="Nth-sG-sTR"/>
+                            <constraint firstItem="2L5-JO-11j" firstAttribute="bottom" secondItem="QIW-6z-cfH" secondAttribute="bottom" id="PzE-Dl-rJV"/>
+                            <constraint firstItem="2L5-JO-11j" firstAttribute="trailing" secondItem="QIW-6z-cfH" secondAttribute="trailing" id="o09-Dv-vlz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="oOC-V1-uZo"/>
+                    <connections>
+                        <outlet property="tableView" destination="QIW-6z-cfH" id="5nb-BM-oVg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="074-2K-HaI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3121" y="32"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="SmK-Wx-74X">
             <objects>
                 <navigationController storyboardIdentifier="SelectBoard" automaticallyAdjustsScrollViewInsets="NO" id="oo3-4g-7ns" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Pi0-xP-Evu">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -161,7 +201,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Or-S9-FQH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2081" y="421"/>
+            <point key="canvasLocation" x="2245" y="507"/>
         </scene>
     </scenes>
     <resources>
@@ -170,7 +210,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -6,5 +6,10 @@ target 'KBDashBoard' do
   use_frameworks!
 
   # Pods for KBDashBoard
+  pod 'ZohoDeskPortalKB', :path => "/Users/rajesh-tt221/Documents/ASAP ios with platform"
+  pod 'ZohoDeskPortalAPIKit', :path => "/Users/rajesh-tt221/Documents/ASAP ios with platform"
+  pod 'ZohoDeskPortalConfiguration', :path => "/Users/rajesh-tt221/Documents/ASAP ios with platform"
+  pod 'ZohoDeskPlatformDataBridge', :path => "/Users/rajesh-tt221/Documents/desk-platform-sdk-ios"
+  pod 'ZohoDeskPlatformUIKit', :path => "/Users/rajesh-tt221/Documents/desk-platform-sdk-ios"
 
 end

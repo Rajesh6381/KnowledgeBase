@@ -7,16 +7,14 @@
 
 import UIKit
 import CoreData
+import ZohoDeskPortalAPIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-        
-        
+        ZohoDeskPortalSDK.initialize(orgID:"60026827508", appID:"edbsndc2057b2bb51416575883d22933e0be45c64bf5c2588ce08fddc32b5cc6c1537", dataCenter: .IN)
         return true
     }
     

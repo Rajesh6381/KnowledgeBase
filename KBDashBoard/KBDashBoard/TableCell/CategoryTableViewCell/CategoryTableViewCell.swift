@@ -20,15 +20,44 @@ class CategoryTableViewCell: UITableViewCell {
     @IBOutlet weak var categorySectionsLabel: UILabel!
     @IBOutlet weak var CategorySectionsCount: UILabel!
     
-    static let  nibIdentifier = "CategoryTableViewCell"
+    static let identifierCell = "CategoryCell"
     
     
     static func nibName() -> UINib{
-        return UINib(nibName: CategoryTableViewCell.nibIdentifier, bundle: nil)
+        return UINib(nibName: "CategoryTableViewCell", bundle: nil)
     }
     
     
-    func removeSubViews(){
+    func updateData(category: KBCategoriesModal){
+        
+        if let logoUrl = category.logoUrl{
+            DispatchQueue.global().async { [weak self] in
+                
+                if let data = try? Data(contentsOf: URL(string: logoUrl)!) {
+                            if let image = UIImage(data: data){
+                                DispatchQueue.main.async {
+                                    self?.categoryImage.image =  image
+                                    
+                                }
+                            }
+                        }
+                    }
+        }
+        
+        
+        categoryName.text = category.name
+        if let description = category.description{
+            categoryDescription.text = description
+        }else{
+            categoryDescription.text = ""
+        }
+        if category.sectionsCount == "0" {
+            categorySectionsLabel.isHidden = true
+            CategorySectionsCount.isHidden = true
+        }else{
+            CategorySectionsCount.text = category.sectionsCount
+        }
+        categoryArticleCount.text = category.articlesCount
         
     }
     
