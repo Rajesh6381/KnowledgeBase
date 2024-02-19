@@ -6,7 +6,7 @@
 //
 
 protocol NetworkDataManager{
-    func request<T: Codable>(_ pathUrl: PathUrl,modalType: T.Type, parametersQuery: String,passData:@escaping (T?) -> Void )
+    func request<T: Codable>(endPoint: EndPoint,modalType: T.Type,presenter:@escaping (T?) -> Void )
 }
 
 import Foundation
@@ -18,15 +18,19 @@ class NetworkManager: NetworkDataManager{
     static let shared =  NetworkManager()
     
     // To fetch data
-    func request<T: Codable>(_ pathUrl: PathUrl,modalType: T.Type, parametersQuery: String,passData: @escaping (T?)->Void )    {
+    func request<T: Codable>(endPoint: EndPoint ,modalType: T.Type,presenter: @escaping (T?)->Void){
         
-        let generateUrl = URL(string: PathUrl.Base.rawValue + pathUrl.rawValue + "?" + parametersQuery)!
-        let res = URLSession.shared.fetchData(at: generateUrl,modalType: modalType){ result -> T? in
+        guard let url =  endPoint.makeUrl() else{
+            print(NetworkError.UnableGenerateURL)
+            return
+        }
+        
+        let res = URLSession.shared.fetchData(at: url,modalType: modalType){ result -> T? in
             var data: T?
                 switch result{
                 case .success(let modal):
                     data = modal
-                    passData(data)
+                    presenter(data)
                     print(Response.Success.rawValue)
                     
                 case .failure(let error):
@@ -36,7 +40,6 @@ class NetworkManager: NetworkDataManager{
                 }
                 return data
             }
-        
     }
 }
 
@@ -59,7 +62,7 @@ extension URLSession{
                     }
                 }
             }.resume()
-        
+    
         return result
     }
 }

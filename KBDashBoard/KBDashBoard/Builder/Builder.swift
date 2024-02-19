@@ -8,16 +8,16 @@
 import Foundation
 import UIKit
 
-class Builder{
+final class Builder{
     
-    static func build(instance: ArticleCategoryViewController){
+    static let kbCategoryInteractor = KBCategoryInteractor()
+    
+    
+    
+    static func build(instance: SetProtocol,categoriesPath: KBCategoryPath){
         
-        let useCase = UseCase()
-        let presenter = KBCategoriesPresenter()
-        useCase.presenter = presenter
-        presenter.view = instance
-        
-        useCase.getCategoriesData()
-        
+        kbCategoryInteractor.view = instance
+        kbCategoryInteractor.getCategoriesData(kbPath: categoriesPath)
     }
+    
 }
