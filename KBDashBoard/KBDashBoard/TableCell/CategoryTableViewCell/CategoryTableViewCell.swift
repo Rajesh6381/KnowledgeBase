@@ -28,7 +28,7 @@ class CategoryTableViewCell: UITableViewCell {
     }
     
     
-    func updateData(category: KBCategoriesModal){
+    func updateData(category: CoreDataKBCategoriesModal){
         
         if let logoUrl = category.logoUrl{
             DispatchQueue.global().async { [weak self] in
@@ -46,11 +46,8 @@ class CategoryTableViewCell: UITableViewCell {
         
         
         categoryName.text = category.name
-        if let description = category.description{
-            categoryDescription.text = description
-        }else{
-            categoryDescription.text = ""
-        }
+        categoryDescription.text = category.description
+        
         if category.sectionsCount == "0" {
             categorySectionsLabel.isHidden = true
             CategorySectionsCount.isHidden = true

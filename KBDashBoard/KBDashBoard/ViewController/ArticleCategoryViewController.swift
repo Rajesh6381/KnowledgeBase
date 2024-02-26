@@ -6,13 +6,18 @@
 //
 
 import UIKit
+import CoreData
 protocol SetProtocol{
-    func setData<T: Decodable>(categoriesModal: [T]?)
+    func setData<T: NSManagedObject>(categoriesModal: NSFetchedResultsController<T>?)
+    func notify(update: TableUpdate)
 }
+
+
 
 class ArticleCategoryViewController: CommonViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var categories: [KBCategoriesModal]?
+    
+    var categories: NSFetchedResultsController<CoreDataKBCategoriesModal>?
     var kbPath: KBCategoryPath?
     
     @IBOutlet weak var tableView: UITableView!
@@ -21,14 +26,14 @@ class ArticleCategoryViewController: CommonViewController, UITableViewDelegate, 
     
     override func viewDidLoad(){
         super.viewDidLoad()
-        //Loading indicator
-        
-        if self.categories.isNil {
-            spinLoader(loadingSpinner: loadingView)
-        }
-
         //Navigation Search Bar
         searchBar()
+        
+        if categories.isNil {
+            print("nill")
+            spinLoader(loadingSpinner: loadingView)
+        }
+        
         
         //register table cell
         tableView.register(CategoryTableViewCell.nibName(), forCellReuseIdentifier: CategoryTableViewCell.identifierCell)
@@ -37,8 +42,10 @@ class ArticleCategoryViewController: CommonViewController, UITableViewDelegate, 
         tableView.delegate = self
         tableView.dataSource = self
         
-        if let pathAvailable  =  self.kbPath, categories.isNil{
-            Builder.build(instance: self,categoriesPath: pathAvailable)
+        if let pathAvailable  =  self.kbPath, self.categories == nil{
+            print("instancr is calling")
+            let builder = Builder()
+            builder.build(instance: self,categoriesPath: pathAvailable)
         }
         
       }
@@ -49,40 +56,41 @@ class ArticleCategoryViewController: CommonViewController, UITableViewDelegate, 
         return footer
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        guard let data = self.categories else{
-            return 0
-        }
-        return data.count
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        print("rows")
+        let sectionInfo = self.categories?.sections![section]
+        return sectionInfo?.numberOfObjects ?? 0
     }
     
-    
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.identifierCell, for: indexPath) as! CategoryTableViewCell
-        guard let unWrapData = self.categories else{
+        
+        guard let data = self.categories else {
             return cell
         }
-        cell.updateData(category: unWrapData[indexPath.section])
+        
+        
+        cell.updateData(category: data.object(at: indexPath) )
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let category = categories else{
+        guard let category = self.categories else{
             return
         }
         
-        if category[indexPath.section].sectionsCount != "0" {
-            let path = KBCategoryPath.KBSubCategories(id: category[indexPath.section].id)
-            let controller = Navigation.KBCategories(categories: category[indexPath.section].child ?? nil, kbPath: path, identifier: .ArticleCategoryStroyBoard)
-            self.navigate(navigation: controller, with: .push)
+        if category.object(at: indexPath).sectionsCount != "0" {
+            print("again")
+            print(category.object(at: indexPath).id)
+            let path = KBCategoryPath.KBSubCategories(id: category.object(at: indexPath).id)
+            let controller = Navigation.KBCategories(categories: nil , kbPath: path, identifier: .ArticleCategoryStroyBoard)
+           self.navigate(navigation: controller, with: .push)
             
         }else {
-            let categoryId = category[indexPath.section].id
+            print("article page \n\n")
+            let categoryId = category.object(at: indexPath).id
             let path = KBCategoryPath.KBArticles(id: categoryId)
             let controller = Navigation.KBArticle(categoryId: categoryId, identifier: .ArticleList)
             self.navigate(navigation: controller, with: .push)
@@ -93,8 +101,7 @@ class ArticleCategoryViewController: CommonViewController, UITableViewDelegate, 
     
     
     
-    
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool){
         self.navigationController?.isNavigationBarHidden = false
         //hide the table view
         if self.categories.isNil{
@@ -104,31 +111,51 @@ class ArticleCategoryViewController: CommonViewController, UITableViewDelegate, 
 }
 
 extension ArticleCategoryViewController: SetProtocol{
-    
-    func setData<T: Decodable>(categoriesModal: [T]?)  {
-        self.categories = categoriesModal as? [KBCategoriesModal]
-        print("Called")
+    func setData<T>(categoriesModal: NSFetchedResultsController<T>?) where T : NSManagedObject {
+        print("set protocol")
         
-        DispatchQueue.main.async {
+        if self.categories?.fetchedObjects?.count != 0{
+            print("done")
+            self.categories =  categoriesModal as? NSFetchedResultsController<CoreDataKBCategoriesModal>
+            print(self.categories?.fetchedObjects?.count)
             self.tableView.reloadData()
+        }else{
+            self.categories =  categoriesModal as? NSFetchedResultsController<CoreDataKBCategoriesModal>
         }
+        
         self.tableView.isHidden = false
         self.loadingView.stopAnimating()
     }
     
-//    
-//    func setData(categoriesModal: [KBCategoriesModals]?) {
-//        self.categories = categoriesModal
-//        print("Called")
-//        DispatchQueue.main.async {
-//            self.tableView.reloadData()
-//        }
-//        self.tableView.isHidden = false
-//        self.loadingView.stopAnimating()
-//        
-//        
-//    }
+    
+    func notify(update: TableUpdate) {
+        print("update")
+        
+            self.loadingView.stopAnimating()
+            self.tableView.isHidden = false
+        if ((self.categories?.fetchedObjects?.isEmpty) != nil) {
+            
+            switch update{
+            case .inserting(let indexPath,_):
+                print("view insert")
+                tableView.insertRows(at: [indexPath], with: .fade)
+            case .deleting(let indexPath,_):
+                print("view delete")
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            case .moving(let indexPath,let  newIndexPath):
+                break
+            case .updating(let indexPath,_):
+                print("view delete")
+                tableView.reloadRows(at: [indexPath], with: .fade)
+            }
+        }
+    }
+    
+
 }
+
+
+
 
 
 

@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23B81" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="AssociatedDepartmentId" representedClassName="AssociatedDepartmentId" syncable="YES">
-        <attribute name="id" optional="YES" attributeType="String"/>
-        <relationship name="ids" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KBCategoriesModal" inverseName="associatedDepartmentIds" inverseEntity="KBCategoriesModal"/>
+    <entity name="CoreDataKBArticleModal" representedClassName="CoreDataKBArticleModal" syncable="YES" codeGenerationType="class">
+        <attribute name="categoryId" attributeType="String"/>
+        <attribute name="createdTime" optional="YES" attributeType="String"/>
+        <attribute name="id" attributeType="String"/>
+        <attribute name="locale" optional="YES" attributeType="String"/>
+        <attribute name="modifiedTime" optional="YES" attributeType="String"/>
+        <attribute name="permalink" optional="YES" attributeType="String"/>
+        <attribute name="rootcategoryId" optional="YES" attributeType="String"/>
+        <attribute name="summary" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="translationId" optional="YES" attributeType="String"/>
+        <attribute name="webUrl" optional="YES" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
-    <entity name="KBCategoriesModal" representedClassName="KBCategoriesModal" syncable="YES" codeGenerationType="class">
-        <attribute name="articleCount" optional="YES" attributeType="String"/>
-        <attribute name="articleViewType" optional="YES" attributeType="String"/>
-        <attribute name="associatedDepartmentId" optional="YES" attributeType="String"/>
+    <entity name="CoreDataKBCategoriesModal" representedClassName="CoreDataKBCategoriesModal" syncable="YES">
+        <attribute name="articlesCount" optional="YES" attributeType="String"/>
         <attribute name="categoriesDescription" optional="YES" attributeType="String"/>
-        <attribute name="child" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="id" attributeType="String"/>
         <attribute name="isFollowing" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="level" optional="YES" attributeType="String"/>
         <attribute name="locale" optional="YES" attributeType="String"/>
@@ -20,11 +31,15 @@
         <attribute name="permalink" optional="YES" attributeType="String"/>
         <attribute name="primaryDepartmentIds" optional="YES" attributeType="String"/>
         <attribute name="rootCategoryId" optional="YES" attributeType="String"/>
-        <attribute name="sectionCount" optional="YES" attributeType="String"/>
+        <attribute name="sectionsCount" optional="YES" attributeType="String"/>
         <attribute name="transalatedDescription" optional="YES" attributeType="String"/>
         <attribute name="translatedName" optional="YES" attributeType="String"/>
         <attribute name="visibility" optional="YES" attributeType="String"/>
         <attribute name="webUrl" optional="YES" attributeType="String"/>
-        <relationship name="associatedDepartmentIds" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AssociatedDepartmentId" inverseName="ids" inverseEntity="AssociatedDepartmentId"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
 </model>

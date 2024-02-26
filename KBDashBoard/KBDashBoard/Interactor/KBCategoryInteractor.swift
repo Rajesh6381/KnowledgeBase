@@ -6,37 +6,128 @@
 //
 
 import Foundation
-protocol GetData{
-    func getCategoriesData(kbPath: KBCategoryPath)
+protocol Notify{
+    func notifications(table: TableUpdate)
 }
 
-class KBCategoryInteractor: GetData{
+class KBCategoryInteractor: Notify{
     
     
     var view: SetProtocol?
+    var coreData: CDManager?
     
-// paramQuery = "hasArticles=true&locale=eu&include=articlesCount%2CsectionsCount&portalId=edbsnace8901b67ed92219428dc84a50ab4f3ed89f4b283f2b51f152bb76c0879a94f"
+    func notifications(table: TableUpdate){
+        view?.notify(update: table)
+    }
     
-    func getCategoriesData(kbPath: KBCategoryPath) {
-        
+    
+    @discardableResult
+    func getCDdata(predicatePath: KBCategoryPath) -> Bool{
+        if let data = self.coreData?.getData(from: predicatePath ), data.fetchedObjects?.count != 0 {
+            print("has core data ")
+            self.view?.setData(categoriesModal: data)
+            return true
+        }
+        print("no core data")
+        return false
+    }
+    
+    
+    func processData(kbPath: KBCategoryPath) {
         switch kbPath{
             case .KBRootCategories:
-                NetworkManager.shared.request(endPoint: kbPath, modalType: DataModal<KBCategoriesModal>.self){ data in
-                    self.view?.setData(categoriesModal: data?.data)// Data to view controller
-                }
-            
+                processRootCategory(with: kbPath)
             case .KBSubCategories(_):
-                NetworkManager.shared.request(endPoint: kbPath, modalType: KBCategoriesModal.self){ data in
-                    self.view?.setData(categoriesModal: data?.child)
-                }
-            
+                processSubCategory(with: kbPath)
             case .KBArticles(_):
-                NetworkManager.shared.request(endPoint: kbPath, modalType: DataModal<KBArticlesModal>.self){ data in
-                    self.view?.setData(categoriesModal: data?.data)
-                }
+                processArticle(with: kbPath)
         }
+    }
+    
+
+    
+    func processRootCategory(with kbPath: KBCategoryPath){
         
+        let hasData = getCDdata(predicatePath: kbPath)
+        NetworkManager.shared.request(endPoint: kbPath, modalType: DataModal<KBCategoriesModal>.self){data in
+            guard let coreData =  data?.data else{
+                return
+            }
+            self.coreData?.syncData(modal: coreData, from: kbPath)
+            if !hasData{
+                print("hasData")
+                self.getCDdata(predicatePath: kbPath)
+            }
+        }
+    }
+    
+    func processSubCategory(with kbPath: KBCategoryPath){
+        
+        let hasData = getCDdata(predicatePath: kbPath)
+        
+        NetworkManager.shared.request(endPoint: kbPath, modalType: KBCategoriesModal.self){kbcategories in
+            guard let coreData =  kbcategories else{
+                return
+            }
+            let subCatgoriesData = self.subCategories(categories: coreData)
+            
+            self.coreData?.syncData(modal: subCatgoriesData, from: kbPath)
+            if !hasData{
+                print("hasData")
+                self.getCDdata(predicatePath: kbPath)
+            }
+        }
+    }
+    
+    func processArticle(with kbPath: KBCategoryPath){
+        let hasData = getCDdata(predicatePath: kbPath)
+        NetworkManager.shared.request(endPoint: kbPath, modalType: DataModal<KBArticlesModal>.self){ data in
+            
+            guard let article =  data?.data else{
+                return
+            }
+            self.coreData?.syncData(modal: article, from: kbPath)
+            if !hasData{
+                print("hasData")
+                self.getCDdata(predicatePath: kbPath)
+            }
+        }
+    }
+    
+    
+    
+
+}
+
+extension KBCategoryInteractor{
+    
+    // To Convert the tree structes of root category to list of child
+    func subCategories(categories: KBCategoriesModal) -> [KBCategoriesModal]{
+        var children: [KBCategoriesModal] = []
+        if let child = categories.child{
+            let _ = child.map({data in
+                children.append(data)
+            })
+        }
+        var index = 0
+        var temp = children[index]
+        
+        while (index < children.count){
+            if let child = temp.child{
+               let _ = child.map({
+                    data in children.append(data)
+                })
+            }
+            index = index + 1
+            if index < children.count{
+                temp = children[index]
+            }
+        }
+        print("children count :  \(children.count)")
+        return children
     }
 }
+       
+
 
 
