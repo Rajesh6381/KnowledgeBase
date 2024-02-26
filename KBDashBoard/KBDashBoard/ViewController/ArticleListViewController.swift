@@ -6,15 +6,12 @@
 //
 
 import UIKit
-
-protocol ArticleListViewProtocol{
-    func getArtilceData(data: [KBArticlesModal]?)
-}
+import CoreData
 
 class ArticleListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var tableView: UITableView!
-    var articleList: [KBArticlesModal] = []
+    var articleList: NSFetchedResultsController<CoreDataKBArticleModal>?
     var categoryId: String?
     
     
@@ -24,10 +21,13 @@ class ArticleListViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         
         if let id = categoryId{
-            Builder.build(instance: self, categoriesPath: KBCategoryPath.KBArticles(id: id))
+            let builder = Builder()
+            builder.build(instance: self, categoriesPath: KBCategoryPath.KBArticles(id: id))
         }
         
-        spinLoader(loadingSpinner: loadingView)
+        if articleList.isNil{
+            spinLoader(loadingSpinner: loadingView)
+        }
         
         //Search bar extension
         searchBar()
@@ -42,13 +42,14 @@ class ArticleListViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return articleList.count
+        let sectionInfo = articleList?.sections![section]
+            return sectionInfo?.numberOfObjects ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexpath: IndexPath ) -> UITableViewCell{
         print("hello world")
         let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCell.identifier, for: indexpath) as! ArticleTableViewCell
-        cell.articleDescription.text = articleList[indexpath.row].title
+        cell.articleDescription.text = self.articleList?.object(at: indexpath).title
         return cell
     }
     
@@ -57,24 +58,50 @@ class ArticleListViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
 }
-
 extension ArticleListViewController: SetProtocol{
-    
-    func setData<T>(categoriesModal: [T]?) where T : Decodable {
-        
-        if let article = categoriesModal as? [KBArticlesModal]{
+    func setData<T>(categoriesModal: NSFetchedResultsController<T>?) where T : NSManagedObject {
+        print("Article data 1")
+        if let article = categoriesModal as? NSFetchedResultsController<CoreDataKBArticleModal>{
+            print("article data")
             self.articleList = article
             self.tableView.reloadData()
             self.loadingView.stopAnimating()
         }
     }
     
-//    func getArtilceData(data: [KBArticlesModal]?) {
-//        if let article = data{
+ 
+    
+    func notify(update: TableUpdate) {
+        print("article update")
+        
+        if ((self.articleList?.fetchedObjects?.isEmpty) != nil) {
+            switch update{
+            case .inserting(let indexPath,_):
+                print("view insert")
+                tableView.insertRows(at: [indexPath], with: .fade)
+            case .deleting(let indexPath,_):
+                print("view delete")
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            case .moving(let indexPath,let  newIndexPath):
+                break
+            case .updating(let indexPath,_):
+                print("view delete")
+                tableView.reloadRows(at: [indexPath], with: .fade)
+            }
+        }
+    }
+    
+
+    
+
+//    func setData<T>(categoriesModal: [T]?) where T : Decodable {
+//        
+//        if let article = categoriesModal as? [KBArticlesModal]{
 //            self.articleList = article
 //            self.tableView.reloadData()
 //            self.loadingView.stopAnimating()
 //        }
 //    }
+
     
 }

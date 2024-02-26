@@ -11,15 +11,18 @@
 		2A01D5882B7A2F0200EA5CE4 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A01D5872B7A2F0200EA5CE4 /* Enum.swift */; };
 		2A01D58C2B7A774700EA5CE4 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A01D58A2B7A774700EA5CE4 /* CategoryTableViewCell.swift */; };
 		2A01D58D2B7A774700EA5CE4 /* CategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A01D58B2B7A774700EA5CE4 /* CategoryTableViewCell.xib */; };
+		2A1346472B870445009B009D /* CoreDataKBArticleModal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1346432B870444009B009D /* CoreDataKBArticleModal+CoreDataProperties.swift */; };
+		2A1346482B870445009B009D /* CoreDataKBCategoriesModal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1346442B870444009B009D /* CoreDataKBCategoriesModal+CoreDataClass.swift */; };
+		2A1346492B870445009B009D /* CoreDataKBArticleModal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1346452B870444009B009D /* CoreDataKBArticleModal+CoreDataClass.swift */; };
+		2A13464A2B870445009B009D /* CoreDataKBCategoriesModal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1346462B870445009B009D /* CoreDataKBCategoriesModal+CoreDataProperties.swift */; };
 		2A546A082B7B4B47007240BA /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A546A072B7B4B47007240BA /* Builder.swift */; };
 		2A546A0C2B7B4F40007240BA /* KBCategoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A546A0B2B7B4F40007240BA /* KBCategoryInteractor.swift */; };
 		2A7261D42B7E50470023FFA5 /* KBCategoryPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7261D32B7E50470023FFA5 /* KBCategoryPath.swift */; };
 		2A73A2AB2B83100E00131511 /* CommonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A73A2AA2B83100E00131511 /* CommonViewController.swift */; };
-		2A73A2B22B837FE600131511 /* AssociatedDepartmentId+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A73A2AE2B837FE600131511 /* AssociatedDepartmentId+CoreDataProperties.swift */; };
-		2A73A2B32B837FE600131511 /* AssociatedDepartmentId+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A73A2AF2B837FE600131511 /* AssociatedDepartmentId+CoreDataClass.swift */; };
-		2A73A2B42B837FE600131511 /* KBCategoriesModal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A73A2B02B837FE600131511 /* KBCategoriesModal+CoreDataProperties.swift */; };
-		2A73A2B52B837FE600131511 /* KBCategoriesModal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A73A2B12B837FE600131511 /* KBCategoriesModal+CoreDataClass.swift */; };
 		2A73A2B72B837FFA00131511 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A73A2B62B837FFA00131511 /* CoreDataManager.swift */; };
+		2AB22E142B84687A00E2C65A /* KBDashBoard.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = C34475A42B760C76008782B0 /* KBDashBoard.xcdatamodeld */; };
+		2AB22E262B84AE7B00E2C65A /* KBCategoriesCDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB22E252B84AE7B00E2C65A /* KBCategoriesCDManager.swift */; };
+		2AB22E282B84B65100E2C65A /* KBArticleCDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB22E272B84B65100E2C65A /* KBArticleCDManager.swift */; };
 		2ACE33F72B7F3BF6004704CE /* ArticleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACE33F62B7F3BF6004704CE /* ArticleListViewController.swift */; };
 		2ACE33FB2B7F3DB5004704CE /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACE33F92B7F3DB5004704CE /* ArticleTableViewCell.swift */; };
 		2ACE33FC2B7F3DB5004704CE /* ArticleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ACE33FA2B7F3DB5004704CE /* ArticleTableViewCell.xib */; };
@@ -28,7 +31,6 @@
 		C344759E2B760C76008782B0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C344759D2B760C76008782B0 /* SceneDelegate.swift */; };
 		C34475A02B760C76008782B0 /* SelectPlatformViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C344759F2B760C76008782B0 /* SelectPlatformViewController.swift */; };
 		C34475A32B760C76008782B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C34475A12B760C76008782B0 /* Main.storyboard */; };
-		C34475A62B760C76008782B0 /* KBDashBoard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C34475A42B760C76008782B0 /* KBDashBoard.xcdatamodeld */; };
 		C34475A82B760C78008782B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C34475A72B760C78008782B0 /* Assets.xcassets */; };
 		C34475AB2B760C78008782B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C34475A92B760C78008782B0 /* LaunchScreen.storyboard */; };
 		C34475B32B761BBC008782B0 /* ArticleCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34475B22B761BBC008782B0 /* ArticleCategoryViewController.swift */; };
@@ -41,15 +43,17 @@
 		2A01D5872B7A2F0200EA5CE4 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		2A01D58A2B7A774700EA5CE4 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		2A01D58B2B7A774700EA5CE4 /* CategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryTableViewCell.xib; sourceTree = "<group>"; };
+		2A1346432B870444009B009D /* CoreDataKBArticleModal+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CoreDataKBArticleModal+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2A1346442B870444009B009D /* CoreDataKBCategoriesModal+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CoreDataKBCategoriesModal+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2A1346452B870444009B009D /* CoreDataKBArticleModal+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CoreDataKBArticleModal+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2A1346462B870445009B009D /* CoreDataKBCategoriesModal+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CoreDataKBCategoriesModal+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2A546A072B7B4B47007240BA /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
 		2A546A0B2B7B4F40007240BA /* KBCategoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBCategoryInteractor.swift; sourceTree = "<group>"; };
 		2A7261D32B7E50470023FFA5 /* KBCategoryPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBCategoryPath.swift; sourceTree = "<group>"; };
 		2A73A2AA2B83100E00131511 /* CommonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewController.swift; sourceTree = "<group>"; };
-		2A73A2AE2B837FE600131511 /* AssociatedDepartmentId+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AssociatedDepartmentId+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		2A73A2AF2B837FE600131511 /* AssociatedDepartmentId+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AssociatedDepartmentId+CoreDataClass.swift"; sourceTree = "<group>"; };
-		2A73A2B02B837FE600131511 /* KBCategoriesModal+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KBCategoriesModal+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		2A73A2B12B837FE600131511 /* KBCategoriesModal+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KBCategoriesModal+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2A73A2B62B837FFA00131511 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		2AB22E252B84AE7B00E2C65A /* KBCategoriesCDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBCategoriesCDManager.swift; sourceTree = "<group>"; };
+		2AB22E272B84B65100E2C65A /* KBArticleCDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBArticleCDManager.swift; sourceTree = "<group>"; };
 		2ACE33F62B7F3BF6004704CE /* ArticleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListViewController.swift; sourceTree = "<group>"; };
 		2ACE33F92B7F3DB5004704CE /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		2ACE33FA2B7F3DB5004704CE /* ArticleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleTableViewCell.xib; sourceTree = "<group>"; };
@@ -155,6 +159,8 @@
 			children = (
 				2A73A2AD2B837FCF00131511 /* CoreDataModals */,
 				2A73A2B62B837FFA00131511 /* CoreDataManager.swift */,
+				2AB22E252B84AE7B00E2C65A /* KBCategoriesCDManager.swift */,
+				2AB22E272B84B65100E2C65A /* KBArticleCDManager.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -162,10 +168,10 @@
 		2A73A2AD2B837FCF00131511 /* CoreDataModals */ = {
 			isa = PBXGroup;
 			children = (
-				2A73A2AF2B837FE600131511 /* AssociatedDepartmentId+CoreDataClass.swift */,
-				2A73A2AE2B837FE600131511 /* AssociatedDepartmentId+CoreDataProperties.swift */,
-				2A73A2B12B837FE600131511 /* KBCategoriesModal+CoreDataClass.swift */,
-				2A73A2B02B837FE600131511 /* KBCategoriesModal+CoreDataProperties.swift */,
+				2A1346452B870444009B009D /* CoreDataKBArticleModal+CoreDataClass.swift */,
+				2A1346432B870444009B009D /* CoreDataKBArticleModal+CoreDataProperties.swift */,
+				2A1346442B870444009B009D /* CoreDataKBCategoriesModal+CoreDataClass.swift */,
+				2A1346462B870445009B009D /* CoreDataKBCategoriesModal+CoreDataProperties.swift */,
 			);
 			path = CoreDataModals;
 			sourceTree = "<group>";
@@ -208,11 +214,11 @@
 		C344759A2B760C76008782B0 /* KBDashBoard */ = {
 			isa = PBXGroup;
 			children = (
-				2A73A2AC2B837FC500131511 /* CoreData */,
 				2A01D5892B7A772400EA5CE4 /* TableCell */,
 				2A546A062B7B4B0D007240BA /* Builder */,
 				C34475B42B761D86008782B0 /* DataModal */,
 				2A01D5842B7A1E1E00EA5CE4 /* NetworkLayer */,
+				2A73A2AC2B837FC500131511 /* CoreData */,
 				2A546A0A2B7B4CA7007240BA /* Interactor */,
 				2A546A092B7B4C5E007240BA /* ViewController */,
 				C344759B2B760C76008782B0 /* AppDelegate.swift */,
@@ -304,6 +310,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AB22E142B84687A00E2C65A /* KBDashBoard.xcdatamodeld in Resources */,
 				2ACE33FC2B7F3DB5004704CE /* ArticleTableViewCell.xib in Resources */,
 				2A01D58D2B7A774700EA5CE4 /* CategoryTableViewCell.xib in Resources */,
 				C34475AB2B760C78008782B0 /* LaunchScreen.storyboard in Resources */,
@@ -365,20 +372,21 @@
 				C34475A02B760C76008782B0 /* SelectPlatformViewController.swift in Sources */,
 				2A01D5882B7A2F0200EA5CE4 /* Enum.swift in Sources */,
 				2A73A2AB2B83100E00131511 /* CommonViewController.swift in Sources */,
-				2A73A2B32B837FE600131511 /* AssociatedDepartmentId+CoreDataClass.swift in Sources */,
+				2A13464A2B870445009B009D /* CoreDataKBCategoriesModal+CoreDataProperties.swift in Sources */,
 				2A01D58C2B7A774700EA5CE4 /* CategoryTableViewCell.swift in Sources */,
 				C34475B62B761DBC008782B0 /* KBCategoriesModal.swift in Sources */,
-				2A73A2B22B837FE600131511 /* AssociatedDepartmentId+CoreDataProperties.swift in Sources */,
 				2A546A0C2B7B4F40007240BA /* KBCategoryInteractor.swift in Sources */,
+				2AB22E262B84AE7B00E2C65A /* KBCategoriesCDManager.swift in Sources */,
 				2A01D5862B7A1FBA00EA5CE4 /* NetworkManager.swift in Sources */,
-				C34475A62B760C76008782B0 /* KBDashBoard.xcdatamodeld in Sources */,
 				C344759C2B760C76008782B0 /* AppDelegate.swift in Sources */,
-				2A73A2B52B837FE600131511 /* KBCategoriesModal+CoreDataClass.swift in Sources */,
+				2A1346492B870445009B009D /* CoreDataKBArticleModal+CoreDataClass.swift in Sources */,
+				2A1346472B870445009B009D /* CoreDataKBArticleModal+CoreDataProperties.swift in Sources */,
 				2ACE33FB2B7F3DB5004704CE /* ArticleTableViewCell.swift in Sources */,
+				2A1346482B870445009B009D /* CoreDataKBCategoriesModal+CoreDataClass.swift in Sources */,
+				2AB22E282B84B65100E2C65A /* KBArticleCDManager.swift in Sources */,
 				C344759E2B760C76008782B0 /* SceneDelegate.swift in Sources */,
 				2A546A082B7B4B47007240BA /* Builder.swift in Sources */,
 				2A7261D42B7E50470023FFA5 /* KBCategoryPath.swift in Sources */,
-				2A73A2B42B837FE600131511 /* KBCategoriesModal+CoreDataProperties.swift in Sources */,
 				2A73A2B72B837FFA00131511 /* CoreDataManager.swift in Sources */,
 				2ACE33F72B7F3BF6004704CE /* ArticleListViewController.swift in Sources */,
 			);

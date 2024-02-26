@@ -7,13 +7,14 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 enum NavigationAnimationType{
     case push,present
 }
 
 enum Navigation{
-    case KBCategories(categories: [KBCategoriesModal]?, kbPath: KBCategoryPath?, identifier: StoryBoardIdentifier)
+    case KBCategories(categories: NSFetchedResultsController<CoreDataKBCategoriesModal>?, kbPath: KBCategoryPath?, identifier: StoryBoardIdentifier)
     case KBArticle(categoryId: String, identifier: StoryBoardIdentifier)
 }
 
@@ -78,5 +79,9 @@ extension UIViewController: UISearchControllerDelegate{
         view.addSubview(loadingSpinner)
         loadingSpinner.startAnimating()
     }
+}
+
+extension CommonViewController{
+    
 }
 

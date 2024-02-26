@@ -10,14 +10,26 @@ import UIKit
 
 final class Builder{
     
-    static let kbCategoryInteractor = KBCategoryInteractor()
-    
-    
-    
-    static func build(instance: SetProtocol,categoriesPath: KBCategoryPath){
+    func build(instance: SetProtocol,categoriesPath: KBCategoryPath){
+         
+        let interactor = KBCategoryInteractor()
+        let categoriesCD = KBCategoriesCDManager()
+        let articleCD = KBArticleCDManager()
         
-        kbCategoryInteractor.view = instance
-        kbCategoryInteractor.getCategoriesData(kbPath: categoriesPath)
+        switch categoriesPath{
+            case .KBRootCategories,.KBSubCategories(_):
+                categoriesCD.interactor = interactor
+                interactor.coreData = categoriesCD
+            case .KBArticles(_):
+                articleCD.interactor = interactor
+                interactor.coreData = articleCD
+                print("instance 2")
+        }
+        
+         
+        interactor.view = instance
+        
+        interactor.processData(kbPath: categoriesPath)
     }
     
 }
