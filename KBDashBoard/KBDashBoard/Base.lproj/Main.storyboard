@@ -100,7 +100,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Knowledge Base" largeTitleDisplayMode="never" id="UHp-tM-ehc">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="line.3.horizontal" catalog="system" id="2oY-Fg-bwv"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="menu" id="2oY-Fg-bwv">
+                            <color key="tintColor" red="0.96470588450000005" green="0.97254902119999997" blue="0.98431372640000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="zc5-MZ-Smt" id="4fA-2w-5NJ"/>
@@ -164,7 +166,7 @@
                             <color key="textShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                         <navigationBarAppearance key="standardAppearance">
-                            <color key="backgroundColor" red="0.2117646933" green="0.43137252329999998" blue="0.38823530080000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="backgroundColor" red="0.21568629149999999" green="0.4352940917" blue="0.38823530080000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <textAttributes key="titleTextAttributes">
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </textAttributes>
@@ -205,7 +207,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
+        <image name="menu" width="22" height="22"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

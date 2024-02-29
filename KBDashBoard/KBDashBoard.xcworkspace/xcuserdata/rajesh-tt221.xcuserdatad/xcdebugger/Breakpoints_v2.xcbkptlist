@@ -357,22 +357,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C718B210-2DE6-4DA9-A737-5DE1111B1558"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "KBDashBoard/Interactor/KBCategoryInteractor.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "processArticle(with:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "004847AF-9411-4F27-A1C1-3078B6D9BF10"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -432,6 +416,342 @@
                   offsetFromSymbolStart = "316">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7432CE6E-BA72-4DC0-AC90-0E4A25FE6D9D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KBDashBoard/KBCategoryBinder.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "prepareBuilderJSONS(onCompletion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7432CE6E-BA72-4DC0-AC90-0E4A25FE6D9D - a52a4f614d21352e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.String) -&gt; () in KBDashBoard.Binder.prepareBuilderJSONS(onCompletion: (Swift.Array&lt;Foundation.Data&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "KBDashBoard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rajesh-tt221/Documents/XCode%20Projects/KnowledgeBase/KBDashBoard/KBDashBoard/KBCategoryBinder.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "276">
+               </Location>
+               <Location
+                  uuid = "7432CE6E-BA72-4DC0-AC90-0E4A25FE6D9D - a52a4f614d21352e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.String) -&gt; () in KBDashBoard.Binder.prepareBuilderJSONS(onCompletion: (Swift.Array&lt;Foundation.Data&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "KBDashBoard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rajesh-tt221/Documents/XCode%20Projects/KnowledgeBase/KBDashBoard/KBDashBoard/KBCategoryBinder.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "704">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5D722D46-6FB2-48F0-BCBC-4171AB7A70DA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KBDashBoard/KBCategoryBinder.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "prepareBuilderJSONS(onCompletion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5D722D46-6FB2-48F0-BCBC-4171AB7A70DA - 6e9bec8f82f628d2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "KBDashBoard.Binder.prepareBuilderJSONS(onCompletion: (Swift.Array&lt;Foundation.Data&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "KBDashBoard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rajesh-tt221/Documents/XCode%20Projects/KnowledgeBase/KBDashBoard/KBDashBoard/KBCategoryBinder.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "256">
+               </Location>
+               <Location
+                  uuid = "5D722D46-6FB2-48F0-BCBC-4171AB7A70DA - a52a4f614d21352e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.String) -&gt; () in KBDashBoard.Binder.prepareBuilderJSONS(onCompletion: (Swift.Array&lt;Foundation.Data&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "KBDashBoard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rajesh-tt221/Documents/XCode%20Projects/KnowledgeBase/KBDashBoard/KBDashBoard/KBCategoryBinder.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "276">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "46A9E68A-C8C4-4FE7-B507-3D8B68584D93"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KBDashBoard/Binder/KBCategoryBinder.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "initialize(onCompletion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "46A9E68A-C8C4-4FE7-B507-3D8B68584D93 - 6d8b818558aaa74f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "KBDashBoard.KBCategoryBinder.initialize(onCompletion: (ZohoDeskPlatformDataBridge.ZPIntializeProgress) -&gt; ()) -&gt; ()"
+                  moduleName = "KBDashBoard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rajesh-tt221/Documents/XCode%20Projects/KnowledgeBase/KBDashBoard/KBDashBoard/Binder/KBCategoryBinder.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "96">
+               </Location>
+               <Location
+                  uuid = "46A9E68A-C8C4-4FE7-B507-3D8B68584D93 - 6d8b818558aaa74f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "KBDashBoard.KBCategoryBinder.initialize(onCompletion: (ZohoDeskPlatformDataBridge.ZPIntializeProgress) -&gt; ()) -&gt; ()"
+                  moduleName = "KBDashBoard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rajesh-tt221/Documents/XCode%20Projects/KnowledgeBase/KBDashBoard/KBDashBoard/Binder/KBCategoryBinder.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "60">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "17FA266E-202F-479E-A914-F409B772BBB2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KBDashBoard/Binder/KBCategoryBinder.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "render(basedOn:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "01F5A1E6-C239-41AC-AED1-4989ED2ACB5D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KBDashBoard/Binder/KBSubCategoryBinder.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "prepareData(of:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2DABB566-BB96-4CDB-9CA9-106353F71E67"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KBDashBoard/Binder/KBSubCategoryBinder.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "initialize(onCompletion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E0362067-207D-4220-84FA-7CF0530337A5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KBDashBoard/Binder/KBSubCategoryBinder.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "KBSubCategoryBinder"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BBCA3345-4EF5-412F-A347-7CB0828DC1D5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KBDashBoard/Binder/KBSubCategoryBinder.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "KBSubCategoryBinder"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "88F933BF-4A52-4AEF-A229-DC8DF766356C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KBDashBoard/Binder/KBCategoryBinder.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "notify(update:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "88F933BF-4A52-4AEF-A229-DC8DF766356C - 8b2a89ec72ebd23c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "KBDashBoard.KBCategoryBinder.notify(update: KBDashBoard.TableUpdate) -&gt; ()"
+                  moduleName = "KBDashBoard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rajesh-tt221/Documents/XCode%20Projects/KnowledgeBase/KBDashBoard/KBDashBoard/Binder/KBCategoryBinder.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "149"
+                  endingLineNumber = "149"
+                  offsetFromSymbolStart = "664">
+               </Location>
+               <Location
+                  uuid = "88F933BF-4A52-4AEF-A229-DC8DF766356C - 8b2a89ec72ebd23c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "KBDashBoard.KBCategoryBinder.notify(update: KBDashBoard.TableUpdate) -&gt; ()"
+                  moduleName = "KBDashBoard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rajesh-tt221/Documents/XCode%20Projects/KnowledgeBase/KBDashBoard/KBDashBoard/Binder/KBCategoryBinder.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "149"
+                  endingLineNumber = "149"
+                  offsetFromSymbolStart = "560">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E0053240-E512-429F-BC51-72E7B95A914A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KBDashBoard/Binder/KBCategoryBinder.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "prepareData(of:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E0053240-E512-429F-BC51-72E7B95A914A - 46be7309e0f0884b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "KBDashBoard.KBCategoryBinder.prepareData(of: ZohoDeskPlatformDataBridge.ZBDataSourceType) -&gt; Swift.Array&lt;ZohoDeskPlatformDataBridge.ZBDataItem&gt;"
+                  moduleName = "KBDashBoard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rajesh-tt221/Documents/XCode%20Projects/KnowledgeBase/KBDashBoard/KBDashBoard/Binder/KBCategoryBinder.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102"
+                  offsetFromSymbolStart = "372">
+               </Location>
+               <Location
+                  uuid = "E0053240-E512-429F-BC51-72E7B95A914A - 46be7309e0f08ddd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "KBDashBoard.KBCategoryBinder.prepareData(of: ZohoDeskPlatformDataBridge.ZBDataSourceType) -&gt; Swift.Array&lt;ZohoDeskPlatformDataBridge.ZBDataItem&gt;"
+                  moduleName = "KBDashBoard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rajesh-tt221/Documents/XCode%20Projects/KnowledgeBase/KBDashBoard/KBDashBoard/Binder/KBCategoryBinder.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "304">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CD9E2D9C-9464-45E9-A444-0FDB9131B759"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KBDashBoard/Binder/KBCategoryBinder.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "numberOfSections()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

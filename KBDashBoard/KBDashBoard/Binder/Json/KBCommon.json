@@ -1,0 +1,113 @@
+{
+    "uiPatterns": [
+        {
+            "pattern_uid": "topNavigationBar_pattern",
+            "patterns": [
+                {
+                    "itemType": "label",
+                    "key": "navBarTitle",
+                    "style":{
+                        "textStyle":{
+                            "textColor_id": "White"
+                        }
+                    }
+                    
+                },
+                {
+                    "itemType": "rightBarButton",
+                    "key": "navMenuIcon",
+                    "actions": [
+                        {
+                            "actionKey": "buttonsKey",
+                            "uiActionType": "tap"
+                        }
+                    ]
+                    
+                },
+                {
+                    "itemType": "leftBarButton",
+                    "key": "navBackIcon",
+
+                    "style": {
+                        "tintColor_id": "White",
+                        "textStyle":{
+                            "textColor_id": "White"
+                        }
+        
+                    },
+                    "actions": [
+                        {
+                            "actionKey": "backButton",
+                            "uiActionType": "tap",
+                            "navigationIDs":[
+                                "goBack"
+                            ]
+                        }
+                        
+                    ]
+                    
+
+                }
+            ]
+        },
+        {
+            "pattern_uid": "searchBar_pattern",
+            "patterns": [
+                {
+                    "itemType": "textInput",
+                    "key": "searchTextInput",
+                    "style": {
+                        "bgColor_id": "White",
+                        "textStyle": {
+                            "isEditable": true
+                        }
+                    }
+                }
+            ]
+    }
+    ],
+    "navigations": [
+        {
+            "navigation_uid": "goBack",
+            "navigationKey": "Back",
+            "transitionType": "backward"
+        },
+        {
+            "navigation_uid": "kbCategoryScreen",
+            "navigationKey":"kbCategoryScreen",
+            "transitionType":"push",
+            "destination_id":"firstScreen"
+        },
+        {
+            "navigation_uid": "kbSubCategoryListScreen",
+            "navigationKey":"kbSubCategoryListScreen",
+            "transitionType":"push",
+            "destination_id":"kbSubCategoryListScreen"
+        }
+    ],
+    "conditionalStyles": [
+        {
+            "uid": "icon_color",
+            "options": [
+                {
+                    "value": "clicked",
+                    "condition": "is",
+                    "style": {
+                        "textStyle": {
+                            "textColor_id": "White"
+                        }
+                    }
+                },
+                {
+                    "value": "notClicked",
+                    "condition": "is",
+                    "style": {
+                        
+                        "bgColor_id": "PrimaryText",
+                        "tintColor_id": "BGColor"
+                    }
+                }
+            ]
+        }
+    ]
+}
