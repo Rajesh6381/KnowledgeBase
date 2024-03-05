@@ -23,7 +23,7 @@ enum PortalId: String{
 }
 
 enum StoryBoardIdentifier:String{
-    case ArticleCategoryStroyBoard, ArticleList
+    case ArticleCategoryStroyBoard, ArticleList, ArticleDetailsStoryBoard
 }
 
 

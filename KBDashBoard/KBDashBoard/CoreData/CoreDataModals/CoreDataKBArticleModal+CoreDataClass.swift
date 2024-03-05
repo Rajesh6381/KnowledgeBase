@@ -1,8 +1,8 @@
 //
 //  CoreDataKBArticleModal+CoreDataClass.swift
-//  
+//  KBDashBoard
 //
-//  Created by Rajesh R on 22/02/24.
+//  Created by Rajesh R on 05/03/24.
 //
 //
 

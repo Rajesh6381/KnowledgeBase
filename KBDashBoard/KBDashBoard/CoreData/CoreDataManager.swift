@@ -20,8 +20,7 @@ class CoreDataManager<T: NSManagedObject>: NSObject{
     
     lazy var persistentContainer: NSManagedObjectContext = {
        let container =  (UIApplication.shared.delegate as! AppDelegate).persistentContainer.newBackgroundContext()
-
-
+        container.automaticallyMergesChangesFromParent = true
      return container
      }()
     
@@ -65,6 +64,7 @@ class CoreDataManager<T: NSManagedObject>: NSObject{
     
     func saveData(){
         do {
+            //try persistentContainer.save()
             try context.save()
             print("saved")
         }catch let error{

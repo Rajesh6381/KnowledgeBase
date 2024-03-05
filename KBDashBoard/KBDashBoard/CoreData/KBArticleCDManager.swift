@@ -38,17 +38,31 @@ class KBArticleCDManager: CoreDataManager<CoreDataKBArticleModal>, CDManager {
         articleCDModal.translationId = articleData.translationId
         articleCDModal.rootcategoryId = articleData.rootCategoryId
         articleCDModal.categoryId = articleData.categoryId
+        articleCDModal.likeCount = articleData.likeCount
+        articleCDModal.dislikeCount = articleData.dislikeCount
+        articleCDModal.answer = articleData.answer
+        
     }
     
     func syncData<T>(modal: [T],from path: KBCategoryPath){
         print("syncing")
         
         let _ = modal.map({ article in
-            addArticlesData(data: article as! KBArticlesModal)
+            addArticlesData(data: article as! KBArticlesModal,for: path)
         })
         
         deleteArticle(articles: modal as! [KBArticlesModal])
         saveData()
+    }
+    
+    override func saveData() {
+        do{
+            try persistentContainer.save()
+            print("data saved ")
+        }catch let error{
+            print(error)
+            print("error while saving data")
+        }
     }
     
     func articlePredicate(id: String){
@@ -65,9 +79,10 @@ class KBArticleCDManager: CoreDataManager<CoreDataKBArticleModal>, CDManager {
         })
         
         do{
-            let _ = try context.fetch(request).map({data in
+            let _ = try persistentContainer.fetch(request).map({data in
                 if !ids.contains(data.id){
                     context.delete(data)
+                    print("deleted")
                 }
             })
         }catch let error{
@@ -76,11 +91,28 @@ class KBArticleCDManager: CoreDataManager<CoreDataKBArticleModal>, CDManager {
         }
     }
     
-    func addArticlesData(data: KBArticlesModal){
+    func addArticlesData(data: KBArticlesModal,for path : KBCategoryPath){
         
-        articlePredicate(id: data.id)
+        switch path{
+            case .KBArticles(let id):
+                let predicate = NSPredicate(format: "id == %@",data.id)
+                request.predicate = predicate
+                fetchingData(modal: data)
+                //for delete set predicate
+                let predicates = NSPredicate(format: "categoryId == %@",id)
+                request.predicate = predicates
+            case .KBArticleDetails(_):
+                let predicate = NSPredicate(format: "id == %@",data.id)
+                request.predicate = predicate
+                fetchingData(modal: data)
+            default:
+                print("default")
+        }
+    }
+    
+    func fetchingData(modal data: KBArticlesModal){
         do{
-            let coreData = try persistentContainer.fetch(request)
+            let coreData = try context.fetch(request)
             mergingData(coreData: coreData, data: data)
             
         }catch let error{
@@ -94,18 +126,16 @@ class KBArticleCDManager: CoreDataManager<CoreDataKBArticleModal>, CDManager {
     func getData<T: NSManagedObject>(from categories: KBCategoryPath) -> NSFetchedResultsController<T>?{
         
         switch categories{
-            case .KBRootCategories:
-                let predicate = NSPredicate(format: "rootCategoryId == %@","")
-                request.predicate = predicate
-                loadSavedData()
-            case .KBSubCategories(let id):
-                let predicate = NSPredicate(format: "parentCategoryId == %@", id)
-                request.predicate = predicate
-                loadSavedData()
             case .KBArticles(let id):
                 let predicate = NSPredicate(format: "categoryId == %@", id)
                 request.predicate = predicate
                 loadSavedData()
+            case .KBArticleDetails(let id):
+                let predicate = NSPredicate(format: "id == %@", id)
+                request.predicate  =  predicate
+                loadSavedData()
+            default:
+                print("default")
         }
         //fetchResultController.delegate = self
         return fetchResultController as? NSFetchedResultsController<T>
@@ -119,13 +149,15 @@ class KBArticleCDManager: CoreDataManager<CoreDataKBArticleModal>, CDManager {
             article?.title = data.title
             article?.modifiedTime = data.modifiedTime
             article?.summary = data.summary
-            article?.summary = data.summary
+            article?.answer = data.answer.isNil ? article?.answer : data.answer
+            article?.likeCount = data.likeCount.isNil ? article?.likeCount : data.likeCount
+            article?.dislikeCount = data.dislikeCount.isNil ? article?.dislikeCount : data.dislikeCount
         }else{
             createArticleEntity(articleData: data)
         }
     }
     
-    
+
     
     func saveArticleInCoreData(data: [KBArticlesModal]){
         let _ = data.map({article in
@@ -144,13 +176,13 @@ extension KBArticleCDManager: NSFetchedResultsControllerDelegate{
         switch type{
             case .insert:
                 print("insert")
-            interactor?.notifications(table: .inserting(indexPath: newIndexPath!, newIndexPath: IndexPath()))
+                interactor?.notifications(table: .inserting(indexPath: newIndexPath!, newIndexPath: IndexPath()))
             case .delete:
                 print("delete")
-            interactor?.notifications(table: .deleting(indexPath: indexPath!, newIndexPath: IndexPath()))
+                interactor?.notifications(table: .deleting(indexPath: indexPath!, newIndexPath: IndexPath()))
             case .update:
                 print("update")
-            interactor?.notifications(table:.deleting(indexPath: indexPath!, newIndexPath: IndexPath()))
+                interactor?.notifications(table:.updating(indexPath: indexPath!, newIndexPath: IndexPath()))
             case .move:
                 print("move")
             default:

@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import CoreData
+import WebKit
 
 enum NavigationAnimationType{
     case push,present
@@ -15,7 +16,7 @@ enum NavigationAnimationType{
 
 enum Navigation{
     case KBCategories(categories: NSFetchedResultsController<CoreDataKBCategoriesModal>?, kbPath: KBCategoryPath?, identifier: StoryBoardIdentifier)
-    case KBArticle(categoryId: String, identifier: StoryBoardIdentifier)
+    case KBArticle(id: String, identifier: StoryBoardIdentifier,isDetail: Bool)
 }
 
 
@@ -29,15 +30,21 @@ class CommonViewController: UIViewController{
         
         switch navigation{
             case .KBCategories(let categories,let kbPath ,let identifier):
-                let vc =  storyBoard.instantiateViewController(withIdentifier: identifier.rawValue) as! ArticleCategoryViewController
+                let vc =  storyBoard.instantiateViewController(withIdentifier: identifier.rawValue) as! KBCategoryViewController
                 vc.categories = categories
                 vc.kbPath = kbPath
                 controller = vc
             
-            case .KBArticle(let categoryId,let identifier):
-                let  vc =  storyBoard.instantiateViewController(withIdentifier: identifier.rawValue) as! ArticleListViewController
-                vc.categoryId = categoryId
-                controller = vc
+            case .KBArticle(let id,let identifier,let isDetail):
+                if isDetail{
+                    let vc = storyBoard.instantiateViewController(withIdentifier: identifier.rawValue) as! KBArticleDetailsVC
+                    vc.articleId = id
+                    controller = vc
+                }else{
+                    let  vc =  storyBoard.instantiateViewController(withIdentifier: identifier.rawValue) as! KBArticleViewController
+                    vc.categoryId = id
+                    controller = vc
+                }
         }
         
         guard let viewController = controller else{
@@ -79,9 +86,33 @@ extension UIViewController: UISearchControllerDelegate{
         view.addSubview(loadingSpinner)
         loadingSpinner.startAnimating()
     }
+    
+    func toolBar(){
+        self.navigationController?.toolbar.scrollEdgeAppearance?.backgroundColor = .white
+        self.navigationController?.toolbar.standardAppearance.backgroundColor = .white
+        let titleLabel = UILabel()
+        let attribute = NSMutableAttributedString(string: "Powered By ",attributes: [.font: UIFont.systemFont(ofSize: 15)])
+        let asapImage = NSAttributedString(string: "\u{e91b} ", attributes: [
+                    .font: UIFont.systemFont(ofSize: 15),
+                    .foregroundColor: UIColor.white,
+                    .baselineOffset: NSNumber(value: 2)
+                ])
+        let lastString = NSAttributedString(string: "ASAP",attributes: [.font: UIFont.systemFont(ofSize: 15)])
+        attribute.append(asapImage)
+        attribute.append(lastString)
+        titleLabel.attributedText = attribute
+        titleLabel.textColor = UIColor.black.withAlphaComponent(0.7)
+
+        let titleItem = UIBarButtonItem(customView: titleLabel)
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+
+        self.toolbarItems = [flexSpace, titleItem, flexSpace]
+        
+        let view = UIView()
+        let button = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
+        self.tabBarItem = button
+    }
 }
 
-extension CommonViewController{
-    
-}
 

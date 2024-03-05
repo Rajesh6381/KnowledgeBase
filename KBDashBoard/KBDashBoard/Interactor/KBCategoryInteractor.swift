@@ -41,6 +41,9 @@ class KBCategoryInteractor: Notify{
                 processSubCategory(with: kbPath)
             case .KBArticles(_):
                 processArticle(with: kbPath)
+            case .KBArticleDetails(_):
+                processArticleDetails(with: kbPath)
+                
         }
     }
     
@@ -91,6 +94,21 @@ class KBCategoryInteractor: Notify{
                 print("hasData")
                 self.getCDdata(predicatePath: kbPath)
             }
+        }
+    }
+    
+    func processArticleDetails(with kbPath: KBCategoryPath){
+        let hasData = getCDdata(predicatePath: kbPath)
+        
+        NetworkManager.shared.request(endPoint: kbPath, modalType: KBArticlesModal.self){ data in
+            guard let articleDetail =  data else{
+                return
+            }
+            print(articleDetail)
+            self.coreData?.syncData(modal: [articleDetail], from: kbPath)
+            print("update ")
+            //self.getCDdata(predicatePath: kbPath)
+            
         }
     }
     

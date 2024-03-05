@@ -77,10 +77,8 @@ class KBCategoriesCDManager:CoreDataManager<CoreDataKBCategoriesModal>,CDManager
                 let predicate = NSPredicate(format: "parentCategoryId == %@", id)
                 request.predicate = predicate
                 loadSavedData()
-            case .KBArticles(let id):
-                let predicate = NSPredicate(format: "categoryId == %@", id)
-                request.predicate = predicate
-                loadSavedData()
+            default:
+                print("default cases")
         }
         //fetchResultController.delegate = self
         return fetchResultController as? NSFetchedResultsController<T>
@@ -122,8 +120,8 @@ class KBCategoriesCDManager:CoreDataManager<CoreDataKBCategoriesModal>,CDManager
                 addSubCategoriesData(data: category)
                 let predicate = NSPredicate(format: "rootCategoryId == %@", id)
                 request.predicate = predicate
-            case .KBArticles(_):
-                break
+            default:
+                print("default case")
         }
     }
     
@@ -200,7 +198,7 @@ extension KBCategoriesCDManager: NSFetchedResultsControllerDelegate{
                 interactor?.notifications(table: .deleting(indexPath: indexPath!, newIndexPath: IndexPath()))
             case .update:
                 print("update")
-                interactor?.notifications(table: .deleting(indexPath: indexPath!, newIndexPath: IndexPath()))
+                interactor?.notifications(table: .updating(indexPath: indexPath!, newIndexPath: IndexPath()))
             case .move:
                 print("move")
             

@@ -20,7 +20,7 @@ final class Builder{
             case .KBRootCategories,.KBSubCategories(_):
                 categoriesCD.interactor = interactor
                 interactor.coreData = categoriesCD
-            case .KBArticles(_):
+            case .KBArticles(_), .KBArticleDetails(_):
                 articleCD.interactor = interactor
                 interactor.coreData = articleCD
                 print("instance 2")
@@ -31,5 +31,4 @@ final class Builder{
         
         interactor.processData(kbPath: categoriesPath)
     }
-    
 }

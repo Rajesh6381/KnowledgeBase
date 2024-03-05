@@ -19,10 +19,12 @@ class SelectPlatformViewController: CommonViewController ,ZDPConfigurationDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         print("view did load")
+        toolBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
+        
     }
     
     @IBAction func nativeKB(_ sender: Any) {

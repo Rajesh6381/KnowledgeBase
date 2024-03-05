@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class ArticleListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class KBArticleViewController: CommonViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var tableView: UITableView!
     var articleList: NSFetchedResultsController<CoreDataKBArticleModal>?
@@ -20,6 +20,8 @@ class ArticleListViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        toolBar()
+        self.navigationController?.navigationBar.topItem?.backButtonTitle = "Back"
         if let id = categoryId{
             let builder = Builder()
             builder.build(instance: self, categoriesPath: KBCategoryPath.KBArticles(id: id))
@@ -36,8 +38,8 @@ class ArticleListViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.dataSource = self
         tableView.delegate = self
         
-        navigationItem.backButtonTitle = "Back"
-        navigationItem.title = "Hello World"
+        self.navigationItem.backButtonTitle = "Back"
+        self.navigationItem.title = "Articles"
         // Do any additional setup after loading the view.
     }
     
@@ -47,18 +49,22 @@ class ArticleListViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexpath: IndexPath ) -> UITableViewCell{
-        print("hello world")
         let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCell.identifier, for: indexpath) as! ArticleTableViewCell
         cell.articleDescription.text = self.articleList?.object(at: indexpath).title
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        print("clicked")
+        guard let articleId = self.articleList?.object(at: indexPath).id else{
+            return
+        }
+        let path = Navigation.KBArticle(id: articleId, identifier: StoryBoardIdentifier.ArticleDetailsStoryBoard, isDetail: true)
+        navigate(navigation: path, with: .push)
     }
     
 }
-extension ArticleListViewController: SetProtocol{
+extension KBArticleViewController: SetProtocol{
     func setData<T>(categoriesModal: NSFetchedResultsController<T>?) where T : NSManagedObject {
         print("Article data 1")
         if let article = categoriesModal as? NSFetchedResultsController<CoreDataKBArticleModal>{
@@ -82,11 +88,11 @@ extension ArticleListViewController: SetProtocol{
             case .deleting(let indexPath,_):
                 print("view delete")
                 tableView.deleteRows(at: [indexPath], with: .fade)
+            case .updating(let indexPath,_):
+                print("view update")
+                tableView.reloadRows(at: [indexPath], with: .fade)
             case .moving(let indexPath,let  newIndexPath):
                 break
-            case .updating(let indexPath,_):
-                print("view delete")
-                tableView.reloadRows(at: [indexPath], with: .fade)
             }
         }
     }

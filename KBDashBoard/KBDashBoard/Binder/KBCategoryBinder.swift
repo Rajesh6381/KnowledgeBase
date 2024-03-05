@@ -48,18 +48,18 @@ class KBCategoryBinder: KBbinder {
         }
     }
     
-//    override func numberOfSections() -> Int {
-//        return categories?.fetchedObjects?.count ?? 0
-//    }
+    override func numberOfSections() -> Int {
+        return categories?.fetchedObjects?.count ?? 0
+    }
     
     override func numberOfRows(_ section: Int) -> Int {
-        return categories?.fetchedObjects?.count ?? 0
+        return 1
     }
     
     override func prepareData(of dataSourceType: ZBDataSourceType) -> [ZBDataItem] {
         switch dataSourceType {
         case .list(.getElement(let index, let elements)):
-            guard let cdData = categories?.object(at: index) else{
+            guard let cdData = categories?.object(at: IndexPath(row: index.section, section: index.row)) else{
                 return []
             }
             elements.forEach({ data in
@@ -148,18 +148,18 @@ extension KBCategoryBinder: SetProtocol{
     func notify(update: TableUpdate) {
         switch update{
             case .inserting(let indexPath, let newIndexPath):
-                //let changingIndexPath = IndexPath(row: indexPath.section, section: indexPath.row)
+                let changingIndexPath = IndexPath(row: indexPath.section, section: indexPath.row)
                 guard let data = self.categories?.object(at: indexPath) else{
                     return
                 }
             
-                dbNotifier?(.list(data, newIndexPath , .insert, indexPath))
+                dbNotifier?(.list(data, indexPath , .insert, changingIndexPath))
             case .deleting(indexPath: let indexPath, newIndexPath: let newIndexPath):
-                //let changingIndexPath = IndexPath(row: indexPath.section, section: indexPath.row)
+                let changingIndexPath = IndexPath(row: indexPath.section, section: indexPath.row)
                 guard let data = self.categories?.object(at: indexPath) else{
                     return
                 }
-                dbNotifier?(.list(data, indexPath, .delete, newIndexPath))
+                dbNotifier?(.list(data, changingIndexPath, .delete, newIndexPath))
             case .updating(indexPath: let indexPath, newIndexPath: let newIndexPath):
                 guard let data = self.categories?.object(at: indexPath) else{
                     return

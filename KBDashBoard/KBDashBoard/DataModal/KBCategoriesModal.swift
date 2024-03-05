@@ -66,12 +66,14 @@ import Foundation
 // MARK: - Articles
 struct KBArticlesModal: Codable {
     let title: String
-    let category: Category
-    let locale: String
-    let id, summary, permalink, modifiedTime: String
-    let categoryId: String
-    let webUrl: String
+    let category: Category?
+    let locale: String?
+    let id: String
+    let summary, permalink, modifiedTime: String?
+    let categoryId: String?
+    let webUrl: String?
     let createdTime, translationId, rootCategoryId: String
+    let likeCount, dislikeCount, answer: String?
 
     enum CodingKeys: String, CodingKey {
         case title, category, locale, id, summary, permalink, modifiedTime
@@ -80,6 +82,7 @@ struct KBArticlesModal: Codable {
         case createdTime
         case translationId
         case rootCategoryId
+        case likeCount, dislikeCount, answer
     }
 }
 
@@ -93,65 +96,4 @@ struct Category: Codable {
         case name, id, locale
     }
 }
-
-
-
-// MARK: - SubCategories
-//
-//extension KBCategoriesModals{
-//    struct KBSubCategories: Codable {
-//        let isFollowing: Bool
-//        let articlesCount, level, articleViewType: String
-//        let logoUrl: String
-//        let associatedDepartmentIds: [String]
-//        let primaryDepartmentId, sectionsCount: String
-//        let webUrl: String
-//        let rootCategoryId, permalink, translatedName, translatedDescription: String
-//        let locale, name: String
-//        let child: [KBSubCategoriesChild]
-//        let description, visibility, id: String
-//        let parentCategoryId: Int?
-//        
-//        enum CodingKeys: String, CodingKey {
-//            case isFollowing, articlesCount, level, articleViewType
-//            case logoUrl
-//            case associatedDepartmentIds
-//            case primaryDepartmentId
-//            case sectionsCount
-//            case webUrl
-//            case rootCategoryId
-//            case permalink, translatedName, translatedDescription, locale, name, child, description, visibility, id
-//            case parentCategoryId
-//        }
-//    }
-//    
-//    // MARK: - Child
-//    struct KBSubCategoriesChild: Codable {
-//        let isFollowing: Bool
-//        let articlesCount, level: String
-//        let webUrl: String
-//        let rootCategoryId, permalink: String
-//        let logoUrl: String?
-//        let translatedName: String
-//        let translatedDescription: Int?
-//        let locale, name: String
-//        let child: [KBSubCategoriesChild]
-//        let description: String?
-//        let visibility, id, sectionsCount, parentCategoryId: String
-//        
-//        enum CodingKeys: String, CodingKey {
-//            case isFollowing, articlesCount, level
-//            case webUrl
-//            case rootCategoryId
-//            case permalink
-//            case logoUrl
-//            case translatedName, translatedDescription, locale, name, child, description, visibility, id, sectionsCount
-//            case parentCategoryId
-//        }
-//    }
-//}
-
-
-
-
 

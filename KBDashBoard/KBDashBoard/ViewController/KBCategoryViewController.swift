@@ -13,8 +13,7 @@ protocol SetProtocol{
 }
 
 
-
-class ArticleCategoryViewController: CommonViewController, UITableViewDelegate, UITableViewDataSource {
+class KBCategoryViewController: CommonViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     var categories: NSFetchedResultsController<CoreDataKBCategoriesModal>?
@@ -28,6 +27,7 @@ class ArticleCategoryViewController: CommonViewController, UITableViewDelegate, 
         super.viewDidLoad()
         //Navigation Search Bar
         searchBar()
+        toolBar()
         
         if categories.isNil {
             print("nill")
@@ -91,8 +91,10 @@ class ArticleCategoryViewController: CommonViewController, UITableViewDelegate, 
         }else {
             print("article page \n\n")
             let categoryId = category.object(at: indexPath).id
+            print(categoryId)
+            print(category.object(at: indexPath).webUrl)
             let path = KBCategoryPath.KBArticles(id: categoryId)
-            let controller = Navigation.KBArticle(categoryId: categoryId, identifier: .ArticleList)
+            let controller = Navigation.KBArticle(id: categoryId, identifier: .ArticleList,isDetail: false)
             self.navigate(navigation: controller, with: .push)
         }
     }
@@ -110,7 +112,7 @@ class ArticleCategoryViewController: CommonViewController, UITableViewDelegate, 
     }
 }
 
-extension ArticleCategoryViewController: SetProtocol{
+extension KBCategoryViewController: SetProtocol{
     func setData<T>(categoriesModal: NSFetchedResultsController<T>?) where T : NSManagedObject {
         print("set protocol")
         

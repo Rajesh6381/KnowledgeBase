@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23B81" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="CoreDataKBArticleModal" representedClassName="CoreDataKBArticleModal" syncable="YES" codeGenerationType="class">
+    <entity name="CoreDataKBArticleModal" representedClassName="CoreDataKBArticleModal" syncable="YES">
+        <attribute name="answer" optional="YES" attributeType="String"/>
         <attribute name="categoryId" attributeType="String"/>
         <attribute name="createdTime" optional="YES" attributeType="String"/>
+        <attribute name="dislikeCount" optional="YES" attributeType="String"/>
         <attribute name="id" attributeType="String"/>
+        <attribute name="likeCount" optional="YES" attributeType="String"/>
         <attribute name="locale" optional="YES" attributeType="String"/>
         <attribute name="modifiedTime" optional="YES" attributeType="String"/>
         <attribute name="permalink" optional="YES" attributeType="String"/>

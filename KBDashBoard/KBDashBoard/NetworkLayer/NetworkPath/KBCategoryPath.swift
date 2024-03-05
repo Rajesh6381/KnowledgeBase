@@ -18,6 +18,7 @@ enum KBCategoryPath{
     case KBRootCategories
     case KBSubCategories(id: String)
     case KBArticles(id: String)
+    case KBArticleDetails(id: String)
 }
 
 protocol EndPoint{
@@ -46,6 +47,8 @@ extension KBCategoryPath: EndPoint{
                 return URLPath.BaseURL.rawValue + URLPath.KBRootCategoriesPath.rawValue + "/" + id + "/" + URLPath.KBSubCategoriesPath.rawValue
             case .KBArticles(_):
                 return URLPath.BaseURL.rawValue + URLPath.KBArticles.rawValue
+            case .KBArticleDetails(let id):
+                return URLPath.BaseURL.rawValue + URLPath.KBArticles.rawValue + "/" + id
         }
     }
     
@@ -63,6 +66,10 @@ extension KBCategoryPath: EndPoint{
         case .KBArticles(let id):
             return [
                 URLQueryItem(name: "categoryId", value: id),
+                URLQueryItem(name: "portalId", value: PortalId.TestIdentifier.rawValue)
+            ]
+        case .KBArticleDetails(let id):
+            return [
                 URLQueryItem(name: "portalId", value: PortalId.TestIdentifier.rawValue)
             ]
         }
