@@ -65,7 +65,7 @@ import Foundation
 
 // MARK: - Articles
 struct KBArticlesModal: Codable {
-    let title: String
+    let title: String?
     let category: Category?
     let locale: String?
     let id: String

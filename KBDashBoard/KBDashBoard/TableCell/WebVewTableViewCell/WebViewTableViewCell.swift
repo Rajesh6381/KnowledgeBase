@@ -15,9 +15,10 @@ enum HtmlId: String{
 protocol WebView: AnyObject{
     func webViewCellHeightDidChange( height: CGFloat)
 }
-class WebViewTableViewCell: UITableViewCell, WKScriptMessageHandler{
+
+class WebViewTableViewCell: UITableViewCell, WKNavigationDelegate {
     
-    var delegate: WebView?
+    weak var delegate: WebView?
     @IBOutlet weak var webContents: WKWebView!
     @IBOutlet weak var containerHeight: NSLayoutConstraint!
     
@@ -25,19 +26,23 @@ class WebViewTableViewCell: UITableViewCell, WKScriptMessageHandler{
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        webContents.configuration.userContentController.add(self, name: HtmlId.BodyHeight.rawValue)
+        self.webContents.navigationDelegate = self
         self.webContents.isInspectable = true
         self.webContents.scrollView.bounces = false
         self.webContents.scrollView.showsVerticalScrollIndicator = false
     }
     
     
+    
     static func nib() -> UINib{
         return UINib(nibName: WebViewTableViewCell.identifier, bundle: nil)
     }
     
-    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage){
-        if let body = message.body as? [String: Any] , message.name == HtmlId.BodyHeight.rawValue, let height = body["height"] as? CGFloat{
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        self.webContents.evaluateJavaScript("Math.max(document.body.getBoundingClientRect().height,35)"){(value,error) in
+            guard let height = value as? CGFloat else{
+                return
+            }
             self.delegate?.webViewCellHeightDidChange(height: height + 20.0)
         }
     }

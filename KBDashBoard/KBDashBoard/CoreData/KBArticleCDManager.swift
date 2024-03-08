@@ -12,7 +12,7 @@ class KBArticleCDManager: CoreDataManager<CoreDataKBArticleModal>, CDManager {
   
     
     
-    var interactor: Notify?
+    weak var interactor: Notify?
     
     init() {
         super.init(entity: "CoreDataKBArticleModal")
@@ -44,25 +44,22 @@ class KBArticleCDManager: CoreDataManager<CoreDataKBArticleModal>, CDManager {
         
     }
     
-    func syncData<T>(modal: [T],from path: KBCategoryPath){
-        print("syncing")
+    func getData<T: NSManagedObject>(from categories: KBCategoryPath) -> NSFetchedResultsController<T>?{
         
-        let _ = modal.map({ article in
-            addArticlesData(data: article as! KBArticlesModal,for: path)
-        })
-        
-        deleteArticle(articles: modal as! [KBArticlesModal])
-        saveData()
-    }
-    
-    override func saveData() {
-        do{
-            try persistentContainer.save()
-            print("data saved ")
-        }catch let error{
-            print(error)
-            print("error while saving data")
+        switch categories{
+            case .KBArticles(let id):
+                let predicate = NSPredicate(format: "categoryId == %@", id)
+                request.predicate = predicate
+                loadSavedData()
+            case .KBArticleDetails(let id):
+                let predicate = NSPredicate(format: "id == %@", id)
+                request.predicate  =  predicate
+                loadSavedData()
+            default:
+                print("default")
         }
+        //fetchResultController.delegate = self
+        return fetchResultController as? NSFetchedResultsController<T>
     }
     
     func articlePredicate(id: String){
@@ -74,7 +71,7 @@ class KBArticleCDManager: CoreDataManager<CoreDataKBArticleModal>, CDManager {
     
     func deleteArticle(articles: [KBArticlesModal]){
         
-        var ids = articles.map({data in
+        let ids = articles.map({data in
             return data.id
         })
         
@@ -89,6 +86,16 @@ class KBArticleCDManager: CoreDataManager<CoreDataKBArticleModal>, CDManager {
             print("error while deleting")
             print(error)
         }
+    }
+    func syncData<T>(modal: [T],from path: KBCategoryPath){
+        print("syncing")
+        
+        let _ = modal.map({ article in
+            addArticlesData(data: article as! KBArticlesModal,for: path)
+        })
+        
+        deleteArticle(articles: modal as! [KBArticlesModal])
+        saveData()
     }
     
     func addArticlesData(data: KBArticlesModal,for path : KBCategoryPath){
@@ -110,6 +117,8 @@ class KBArticleCDManager: CoreDataManager<CoreDataKBArticleModal>, CDManager {
         }
     }
     
+    
+    
     func fetchingData(modal data: KBArticlesModal){
         do{
             let coreData = try context.fetch(request)
@@ -119,26 +128,6 @@ class KBArticleCDManager: CoreDataManager<CoreDataKBArticleModal>, CDManager {
             print("error while fetching by id")
             print(error)
         }
-    }
-    
-
-    
-    func getData<T: NSManagedObject>(from categories: KBCategoryPath) -> NSFetchedResultsController<T>?{
-        
-        switch categories{
-            case .KBArticles(let id):
-                let predicate = NSPredicate(format: "categoryId == %@", id)
-                request.predicate = predicate
-                loadSavedData()
-            case .KBArticleDetails(let id):
-                let predicate = NSPredicate(format: "id == %@", id)
-                request.predicate  =  predicate
-                loadSavedData()
-            default:
-                print("default")
-        }
-        //fetchResultController.delegate = self
-        return fetchResultController as? NSFetchedResultsController<T>
     }
     
     

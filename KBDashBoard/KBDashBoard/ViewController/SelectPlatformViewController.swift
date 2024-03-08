@@ -24,6 +24,7 @@ class SelectPlatformViewController: CommonViewController ,ZDPConfigurationDelega
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.isToolbarHidden = true
         
     }
     

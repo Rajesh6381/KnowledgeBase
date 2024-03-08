@@ -64,6 +64,51 @@
                     }
                 }
             ]
+    },{
+        "pattern_uid":"bottomBarPattern",
+        "patterns":[
+            {
+                    "itemType": "vStack",
+                    "itemSizeAttribute":{
+                        "height":{
+                            "value": 35,
+                            "valueType": "staticValue"
+                        }
+                    },
+                    "items":[
+                        {
+                            "itemType":"separatorView",
+                            "itemSizeAttribute":{
+                                "height":{
+                                    "value":2,
+                                    "valueType":"staticValue"
+                                }
+                            },
+                            "style": {
+                                "separatorType": "line",
+                                "bgColor_id": "SeparatorColor"
+                            }
+
+                        },
+                        {
+                            "itemType":"label",
+                            "key": "bottomBarTitle",
+                            "itemSizeAttribute":{
+                                "padding":{
+                                    "top":6
+                                }
+                            },
+                            "style":{
+                                "textStyle":{
+                                "alignment":"center",
+                                "textColor_id":"SecondaryText",
+                                "fontStyle_id":"bottomText"
+                                }
+                            }
+                        }
+                    ]
+            }
+        ]
     }
     ],
     "navigations": [
@@ -79,10 +124,16 @@
             "destination_id":"firstScreen"
         },
         {
-            "navigation_uid": "kbSubCategoryListScreen",
-            "navigationKey":"kbSubCategoryListScreen",
+            "navigation_uid": "kbArticleListScreen",
+            "navigationKey":"kbArticleListScreen",
             "transitionType":"push",
-            "destination_id":"kbSubCategoryListScreen"
+            "destination_id":"kbArticleListScreen"
+        },
+        {
+            "navigation_uid": "kbArticleDetailScreen",
+            "navigationKey": "kbArticleDetailScreen",
+            "transitionType": "push",
+            "destination_id": "kbArticleDetailScreen"
         }
     ],
     "conditionalStyles": [

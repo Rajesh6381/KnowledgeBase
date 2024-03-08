@@ -23,6 +23,10 @@ struct KBStrings{
         case NavigationMenuIcon = "navMenuIcon"
         case NavigationBarTitle = "navBarTitle"
         case NavigationBackIcon = "navBackIcon"
+        case BottomBarTitle = "bottomBarTitle"
+        case LikeButton = "likeButton"
+        case DislikeButton = "dislikeButton"
+        case MoreButton = "moreButton"
     }
     
     enum SearchBarKeys: String{
@@ -49,4 +53,42 @@ struct KBStrings{
     enum Actions: String{
         case Backbutton = "backButton"
     }
+    
+    enum ArticleContainerKeys: String{
+        case Title = "articleTitle"
+        case WebView = "articleWebView"
+        case CreatedDate = "articleCreatedDate"
+    }
+}
+
+enum ScreenIdentifier: String{
+    case KBCategoryScreen = "kbCategoryScreen"
+    case KBArticleScreen = "kbArticleListScreen"
+    case KBArticleDetailScreen = "kbArticleDetailScreen"
+}
+
+enum Icons: String{
+    case Menu = "line.3.horizontal"
+    case Back = "\u{2039}"
+    case Like = "hand.thumbsup"
+    case DisLike = "hand.thumbsdown"
+    case More = "ellipsis"
+    case Image = "photo"
+    case Document = "doc.text"
+}
+
+enum NavigationStrings: String{
+    case BottomBar = "Powered By ASAP"
+    case Back = "Back"
+    case CategoryTitle = "KnowledgeBase"
+    case ArticleTitle = "Articles"
+}
+
+enum PlaceHolderString: String{
+    case Search = "Search"
+}
+
+enum PlainString:String{
+    case ArticleCountTitle = "Articles"
+    case SectionCountTitle = "Sections"
 }

@@ -69,7 +69,7 @@
         <scene sceneID="W6O-si-N6i">
             <objects>
                 <viewController storyboardIdentifier="ArticleCategoryStroyBoard" title="Powered By ASAP" id="nP5-6d-Fid" customClass="KBCategoryViewController" customModule="KBDashBoard" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="YqG-uE-Hag">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="YqG-uE-Hag">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -89,7 +89,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Knowledge Base" largeTitleDisplayMode="never" id="UHp-tM-ehc">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="menu" id="2oY-Fg-bwv">
-                            <color key="tintColor" red="0.96470588450000005" green="0.97254902119999997" blue="0.98431372640000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -237,13 +237,10 @@
                         </navigationBarAppearance>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="Rqd-cG-BIy">
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="Ld2-uD-qpk">
                         <rect key="frame" x="0.0" y="769" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.97954252580000001" green="0.97954252580000001" blue="0.97954252580000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <toolbarAppearance key="standardAppearance">
-                            <color key="backgroundColor" red="0.96470588450000005" green="0.97254902119999997" blue="0.98431372640000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        </toolbarAppearance>
+                        <toolbarAppearance key="standardAppearance"/>
                         <toolbarAppearance key="scrollEdgeAppearance"/>
                     </toolbar>
                     <connections>

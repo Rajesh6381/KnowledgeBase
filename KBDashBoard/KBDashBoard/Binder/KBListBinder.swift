@@ -8,7 +8,7 @@
 import Foundation
 import ZohoDeskPlatformDataBridge
 
-class KBbinder: ZBListProtocol{
+class KBListBinder: KBBase, ZBListProtocol{
     var navigationIdentifier: String
     
     
@@ -31,13 +31,7 @@ class KBbinder: ZBListProtocol{
     func doPerform(builderAction action: ZPUIBuilderAction, onCompletion: @escaping ((ZBCoreBridgeBinderProtocols<Any>?, ZPVoidCompletion?) -> Void)) {
         switch action{
             case .general(.target(let key)):
-                switch KBStrings.Actions(rawValue: key ?? ""){
-                    case .Backbutton:
-                        
-                        onCompletion(nil,nil)
-                    default:
-                        print("no cases")
-                }
+                backNavigation(key: key ?? "", do: onCompletion)
             default :
                 print("nothing")
         }
@@ -47,6 +41,7 @@ class KBbinder: ZBListProtocol{
     
     func initialize(onCompletion: @escaping ((ZohoDeskPlatformDataBridge.ZPIntializeProgress) -> Void)) {
         onCompletion(.success)
+        loadingIndicator?(.begin)
     }
     
     func downloadData(fromUrl url: String, onComplete complete: @escaping ((ZPImageHandlerType) -> Void)) {
@@ -92,33 +87,8 @@ class KBbinder: ZBListProtocol{
     
     func prepareData(of dataSourceType: ZohoDeskPlatformDataBridge.ZBDataSourceType) -> [ZohoDeskPlatformDataBridge.ZBDataItem] {
         switch dataSourceType{
-            
-        case .navigation(.getElement(let elements)):
-            elements.forEach({data in
-                data.valueUpdation
-                switch KBStrings.NavigationKeys(rawValue: data.key){
-                    case .NavigationBackIcon:
-                        data.value.attributedString = attributedImageString(str: "Back", image: "\u{2039}")
-                    case .NavigationBarTitle:
-                    data.value.conditionalValue = "clicked"
-                        data.value.plainString = "Knowledge Base"
-                    case .NavigationMenuIcon:
-                        data.imageValue.image = UIImage(systemName: "line.3.horizontal")
-                    case .none:
-                        print("none Nvigation Bar")
-                }})
-            return elements
         case .search(.getElement(let elements)):
-            elements.forEach({ data in
-                
-                switch KBStrings.SearchBarKeys(rawValue: data.key){
-                    case .SearchInput:
-                        data.value.placeHolderString = "Search"
-                    case .none:
-                        print("None in search Bar")
-                }
-            })
-            return elements
+           return searchDataItem(elements: elements)
         default :
             print("default cases")
             return []
@@ -127,19 +97,6 @@ class KBbinder: ZBListProtocol{
     
     var performAction: (() -> ())?
     
-    
-    func attributedImageString(str: String,image: String) -> NSAttributedString{
-        let fullString = NSMutableAttributedString(string: "")
-        let backArrowString = NSAttributedString(string: image, attributes: [
-                    .font: UIFont.systemFont(ofSize: 40),
-                    .foregroundColor: UIColor.white,
-                    .baselineOffset: NSNumber(value: 15)
-                ])
-        fullString.append(backArrowString)
-        fullString.append(NSAttributedString(string: str,attributes: [.baselineOffset: NSNumber(value: 20)]))
-        
-        return fullString
-    }
     
 
 }

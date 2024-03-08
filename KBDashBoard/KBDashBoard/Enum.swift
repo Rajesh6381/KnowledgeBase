@@ -9,7 +9,7 @@ import Foundation
 
 enum Response: String{
     case Success = "The Data fetched Successfully"
-    case Failure = "Erro, While Fetching Data"
+    case Failure = "Error, While Fetching Data"
 }
 
 enum NetworkError: Error{

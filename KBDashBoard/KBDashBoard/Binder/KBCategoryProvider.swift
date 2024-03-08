@@ -20,7 +20,7 @@ class KBCategoryProvider: ZDBinderProtcol{
     }
     
     func getListDataSource(_ identifier: String) -> ZohoDeskPlatformDataBridge.ZBListProtocol? {
-        return KBCategoryBinder(path: .KBRootCategories)
+        return KBCategoryListBinder(path: .KBRootCategories)
     }
     
     func getChatDataSource(_ identifier: String) -> ZohoDeskPlatformDataBridge.ZBChatProtocol? {

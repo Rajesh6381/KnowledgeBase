@@ -5,17 +5,14 @@
 //  Created by Rajesh R on 26/02/24.
 //
 
-enum ScreenIdentifier: String{
-    case KBCategoryScreen = "kbCategoryScreen"
-    case KBArticleScreen = "kbSubCategoryListScreen"
-}
+
 
 import Foundation
 //import ZohoDeskPlatformUIKit
 import ZohoDeskPlatformDataBridge
 import CoreData
 
-class KBCategoryBinder: KBbinder {
+class KBCategoryListBinder: KBListBinder {
 
     var categories: NSFetchedResultsController<CoreDataKBCategoriesModal>?
     var kbPath: KBCategoryPath?
@@ -49,17 +46,19 @@ class KBCategoryBinder: KBbinder {
     }
     
     override func numberOfSections() -> Int {
-        return categories?.fetchedObjects?.count ?? 0
+        return 1
     }
     
     override func numberOfRows(_ section: Int) -> Int {
-        return 1
+        return categories?.fetchedObjects?.count ?? 0
     }
     
     override func prepareData(of dataSourceType: ZBDataSourceType) -> [ZBDataItem] {
         switch dataSourceType {
+        case .navigation(.getElement(let elements)):
+            return navPrepareData(elements: elements, title: NavigationStrings.CategoryTitle.rawValue, likeCount: nil, dislikeCount: nil)
         case .list(.getElement(let index, let elements)):
-            guard let cdData = categories?.object(at: IndexPath(row: index.section, section: index.row)) else{
+            guard let cdData = categories?.object(at: index) else{
                 return []
             }
             elements.forEach({ data in
@@ -69,7 +68,7 @@ class KBCategoryBinder: KBbinder {
                         if !cdData.logoUrl.isNil{
                             data.value.urlString = cdData.logoUrl
                         }else{
-                            data.imageValue.image = UIImage(systemName: "photo")
+                            data.imageValue.image = UIImage(systemName: Icons.Image.rawValue)
                         }
                     case .Title:
                         data.value.plainString = cdData.name
@@ -84,7 +83,7 @@ class KBCategoryBinder: KBbinder {
                             data.isHide = true
                         }
                     case .ArticleTitle:
-                        data.value.plainString = "Articles"
+                        data.value.plainString = PlainString.ArticleCountTitle.rawValue
                     case .ArtilceCount:
                         data.value.plainString = cdData.articlesCount
                     case .Sections:
@@ -92,7 +91,7 @@ class KBCategoryBinder: KBbinder {
                             data.isHide = true
                         }
                     case .SectionTitle:
-                        data.value.plainString = "Sections"
+                        data.value.plainString = PlainString.SectionCountTitle.rawValue
                     case .SectionCount:
                         data.value.plainString = cdData.sectionsCount
                     case .none:
@@ -118,9 +117,9 @@ class KBCategoryBinder: KBbinder {
                         return
                     }
                     if category?.sectionsCount != "0"{
-                        onCompletion(KBCategoryBinder(path: .KBSubCategories(id: id)),nil)
+                        onCompletion(KBCategoryListBinder(path: .KBSubCategories(id: id)),nil)
                     }else if category?.articlesCount != "0"{
-                        onCompletion(KBSubCategoryBinder(id: id),nil)
+                        onCompletion(KBArticleListBinder(id: id),nil)
                     }
                 default:
                     print("printz")
@@ -136,7 +135,7 @@ class KBCategoryBinder: KBbinder {
     
 }
 
-extension KBCategoryBinder: SetProtocol{
+extension KBCategoryListBinder: SetProtocol{
     func setData<T>(categoriesModal: NSFetchedResultsController<T>?)  {
         print("set protocol")
             
@@ -148,18 +147,15 @@ extension KBCategoryBinder: SetProtocol{
     func notify(update: TableUpdate) {
         switch update{
             case .inserting(let indexPath, let newIndexPath):
-                let changingIndexPath = IndexPath(row: indexPath.section, section: indexPath.row)
                 guard let data = self.categories?.object(at: indexPath) else{
                     return
                 }
-            
-                dbNotifier?(.list(data, indexPath , .insert, changingIndexPath))
+                dbNotifier?(.list(data, indexPath , .insert, indexPath))
             case .deleting(indexPath: let indexPath, newIndexPath: let newIndexPath):
-                let changingIndexPath = IndexPath(row: indexPath.section, section: indexPath.row)
                 guard let data = self.categories?.object(at: indexPath) else{
                     return
                 }
-                dbNotifier?(.list(data, changingIndexPath, .delete, newIndexPath))
+                dbNotifier?(.list(data, indexPath, .delete, newIndexPath))
             case .updating(indexPath: let indexPath, newIndexPath: let newIndexPath):
                 guard let data = self.categories?.object(at: indexPath) else{
                     return

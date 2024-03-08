@@ -27,14 +27,9 @@ extension String{
 <head>
 <script>
     function notify(){
-        var body = document.body,
-        html = document.documentElement;
-        var contentHeight = document.getElementById(bodyContent);
-
-        console.log(body.getBoundingClientRect().height)
+        var body = document.body;
 
         var height = Math.max(body.getBoundingClientRect().height,35);
-        console.log("Notifier called" + height);
         window.webkit.messageHandlers.getHeight.postMessage({height: height})
         
     }

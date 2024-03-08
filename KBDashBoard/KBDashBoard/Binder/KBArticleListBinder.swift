@@ -9,7 +9,7 @@ import Foundation
 import ZohoDeskPlatformDataBridge
 import CoreData
 
-class KBSubCategoryBinder: KBbinder{
+class KBArticleListBinder: KBListBinder{
     
     var articles: NSFetchedResultsController<CoreDataKBArticleModal>?
     var categoryId: String?
@@ -23,7 +23,6 @@ class KBSubCategoryBinder: KBbinder{
     
     override func initialize(onCompletion: @escaping ((ZohoDeskPlatformDataBridge.ZPIntializeProgress) -> Void)) {
         super.initialize(onCompletion: onCompletion)
-        loadingIndicator?(.begin)
         if let id = categoryId{
             let builder = Builder()
             builder.build(instance: self, categoriesPath: KBCategoryPath.KBArticles(id: id))
@@ -35,6 +34,7 @@ class KBSubCategoryBinder: KBbinder{
         return articles?.fetchedObjects?.count ?? 0
     }
     
+    
     override func render(basedOn patternType: ZDPatternType) -> String? {
         
         switch patternType{
@@ -45,20 +45,43 @@ class KBSubCategoryBinder: KBbinder{
         }
     }
     
+    
+    
+    override func doPerform(builderAction action: ZPUIBuilderAction, onCompletion: @escaping ((ZBCoreBridgeBinderProtocols<Any>?, ZPVoidCompletion?) -> Void)) {
+        
+        switch action{
+            case .list(let listAction):
+                switch listAction{
+                    case .tap(_, let indexPath):
+                        print("on tap")
+                    guard let  index = indexPath , let cdData = self.articles?.object(at: index) else{
+                        return
+                    }
+                    onCompletion(KBArticleDetailBinder(id: cdData.id),nil)
+                    default:
+                        print("default action")
+                }
+            default :
+                super.doPerform(builderAction: action, onCompletion: onCompletion)
+        }
+    }
+    
+    
+    
     override func prepareData(of dataSourceType: ZohoDeskPlatformDataBridge.ZBDataSourceType) -> [ZohoDeskPlatformDataBridge.ZBDataItem] {
         
         switch dataSourceType{
+            case .navigation(.getElement(let elements)):
+                return navPrepareData(elements: elements, title: NavigationStrings.ArticleTitle.rawValue, likeCount: nil, dislikeCount: nil)
             case .list(.getElement(let index, let elements)):
                 guard let cdData = self.articles else{
                     return []
                 }
                 let object = cdData.object(at: index)
-        
                 elements.forEach({data in
-                    
                     switch KBStrings.ArticleCellKeys(rawValue: data.key){
                         case .Image:
-                            data.imageValue.image = UIImage(systemName: "doc.text")
+                            data.imageValue.image = UIImage(systemName: Icons.Document.rawValue)
                         case.Title:
                             data.value.plainString = object.title
                         default:
@@ -72,13 +95,15 @@ class KBSubCategoryBinder: KBbinder{
     }
 }
 
-extension KBSubCategoryBinder: SetProtocol{
+extension KBArticleListBinder: SetProtocol{
+    
+    
     func setData<T>(categoriesModal: NSFetchedResultsController<T>?) where T : NSManagedObject {
-
         self.articles =  categoriesModal as? NSFetchedResultsController<CoreDataKBArticleModal>
         handler?(.refresh)
         loadingIndicator?(.end)
     }
+    
     
     func notify(update: TableUpdate) {
         switch update{

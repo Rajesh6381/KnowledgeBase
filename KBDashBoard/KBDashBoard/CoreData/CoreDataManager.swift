@@ -67,6 +67,11 @@ class CoreDataManager<T: NSManagedObject>: NSObject{
             //try persistentContainer.save()
             try context.save()
             print("saved")
+            // Merge changes into the main context
+//            NotificationCenter.default.addObserver(forName: .NSManagedObjectContextDidSave, object: context, queue: .current) { notification in
+//                print("notifications centre")
+//                self.context.mergeChanges(fromContextDidSave: notification)
+//            }
         }catch let error{
             print("unable to save the data")
             print(error)

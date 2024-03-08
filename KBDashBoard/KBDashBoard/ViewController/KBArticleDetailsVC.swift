@@ -75,8 +75,8 @@ class KBArticleDetailsVC: CommonViewController ,UITableViewDelegate, UITableView
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: WebViewTableViewCell.identifier, for: indexPath) as! WebViewTableViewCell
                 cell.delegate = self
-                cell.update(div: article.answer ?? "")
                 cell.containerHeight.constant = height ?? 0.0
+                cell.update(div: article.answer ?? "")
                 return cell
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: DateTableViewCell.identifier, for: indexPath) as! DateTableViewCell
@@ -92,10 +92,10 @@ extension KBArticleDetailsVC: SetProtocol, WebView{
     func webViewCellHeightDidChange(height: CGFloat) {
         if self.height.isNil {
             self.height = height
-            tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .automatic)
-            updateBottomBar()
+            self.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .automatic)
+            self.updateBottomBar()
         }else{
-            loadingView.stopAnimating()
+            self.loadingView.stopAnimating()
         }
     }
     

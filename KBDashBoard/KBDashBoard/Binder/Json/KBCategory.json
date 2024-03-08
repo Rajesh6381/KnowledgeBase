@@ -1,473 +1,693 @@
-
-
 {
-    "screens":[
+    "screens": [
         {
             "uid": "firstScreen",
             "r_uid": "kbCategoryScreen",
             "screenType": "list",
-            "segments":[
-                    {
-                        "segmentType": "container",
-                        "style":{
-                            "bgColor_id": "BGColor"
-                        }
-                    },
-                    {
-                        "segmentType": "topNavigationBar",
-                        "configuration": {
-                            "isNative": true,
-                            "prefersLargeTitles": false
-                        },
-                        "style": {
-                            "bgColor_id":"HeaderColor",
-                            "tintColor_id": "NavStyleColor"
-                        },
-                        "includePattern_id": "topNavigationBar_pattern"
-                        
-                    },
-
-                    {
-                        "segmentType": "search",
-                        "configuration": {
-                            "isNative": true,
-                            "hidesSearchBarWhenScrolling": true
-                        },
-                        "includePattern_id": "searchBar_pattern"
-                    },
-                    {
-                        "segmentType": "listHeader",
-                        "patterns": [
-                            {
-                                "itemType": "vStack",
-                                "key": "listHeader",
-                                "style":{
-                                    "bgColor_id": "White"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "segmentType": "sectionHeader",
-                        "patterns": [
-                            {
-                                "itemType": "vStack",
-                                "key": "sectionHeader",
-                                "style":{
-                                    "bgColor_id": "HeaderColor"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "segmentType": "listItem",
-                        "style":{
-                            "bgColor_id": "BGColor"
-                        },
-
-                        "patterns": [
-                            {
-                                "itemType": "vStack",
-                                "key": "categoryCell",
-                                "style":{
-                                    "bgColor_id":"White"
-                                },
-                                "itemSizeAttribute":{
-                                    "padding":{
-                                        "bottom": 8
-                                    }
-                                },
-                                "items":[
-                                    
-                            {
-
-                                "itemType": "hStack",
-                                "key": "container",
-                                "style":{
-                                    "bgColor_id": "White"
-                                },
-                                "itemSizeAttribute":{
-                                    "padding":{
-                                        "all": 10
-
-                                    }
-                                },
-                                "actions":[
-                                    {
-                                        "actionKey": "cellSelect",
-                                        "uiActionType": "tap",
-                                        "navigationIDs": [
-                                            "kbCategoryScreen",
-                                            "kbSubCategoryListScreen"
-                                        ]
-                                    }
-                                ],
-                                "items":[
-                                    {
-                                        "itemType": "zStack",
-                                        "key": "images",
-                                        "items":[
-                                            {
-                                                "itemType": "imageView",
-                                                "key": "cellImage",
-                                                "itemSizeAttribute": {
-                                                    "width":{
-                                                        "value": 40,
-                                                        "valueType": "staticValue"
-                                                    },
-                                                    "height":{
-                                                        "value":40,
-                                                        "valueType": "staticValue"
-                                                    }
-                                                },
-                                                "style":{
-                                                    "tintColor_id": "IconColor"
-                                                }
-
-                                            }
-                                        ]
-                                    },
-                                        
-                                        
-                                    
-                                    {
-                                        "itemType": "vStack",
-                                        "key": "devision",
-                                        "itemSizeAttribute":{
-                                            "padding":{
-                                                "left":50
-                                            }
-                                        },
-                                        "items":[
-                                            {
-                                                "itemType": "label",
-                                                "key": "cellTitle",
-                                                "style":{
-                                                    "textStyle":{
-                                                        "textColor_id": "PrimaryText",
-                                                        "fontStyle_id": "cellTitle",
-                                                        "maxLines": 0
-                                                    }
-                                                }
-                                            },
-                                            {
-                                                "itemType": "label",
-                                                "key": "cellDescription",
-                                                "style":{
-                                                    "textStyle":{
-                                                        "textColor_id": "PrimaryText",
-                                                        "fontStyle_id": "cellDescription",
-                                                        "maxLines": 0
-                                                    }
-                                                }
-                                            },
-                                            {
-                                                "itemType": "hStack",
-                                                "key": "articleAndSections",
-                                                "itemSizeAttribute":{
-                                                    "padding":{
-                                                        "top": 10
-                                                    }
-                                                },
-                                                "items":[
-                                                    {
-                                                    "itemType": "vStack",
-                                                    "key": "cellArticles",
-                                                    "itemSizeAttribute":{
-                                                        "width":{
-                                                            "value": 100,
-                                                            "valueType": "staticValue"
-                                                        }
-                                                    },
-                                                    "style":{
-                                                        "textStyle":{
-                                                            "textColor_id": "PrimaryText"
-                                                        }
-                                                    },
-                                                    "items":[
-                                                        {
-                                                            "itemType": "label",
-                                                            "key": "cellArticleTitle",
-                                                            "style":{
-                                                                "textStyle":{
-                                                                    "textColor_id":"SubHeading",
-                                                                    "fontStyle_id": "cellTitle2"
-                                                                }
-                                                            }
-                                                        },
-                                                        {
-                                                            "itemType": "label",
-                                                            "key": "cellArticleCount",
-                                                            "itemSizeAttribute":{
-                                                                "padding":{
-                                                                    "top":5
-                                                                }
-
-                                                            },
-                                                            "style":{
-                                                                "textStyle":{
-                                                                    "textColor_id":"PrimaryText",
-                                                                    "fontStyle_id":"cellDescription2"
-                                                                }
-                                                            }
-                                                        }
-    
-                                                    ]
-                                                },
-                                                {
-                                                    "itemType": "vStack",
-                                                    "key": "cellSections",
-                                                    "itemSizeAttribute":{
-                                                        "width":{
-                                                            "value": 60,
-                                                            "valueType":"staticValue"
-                                                        },
-                                                        "padding":{
-                                                            "left": 0
-                                                        }
-                                                    },
-                                                    "style":{
-                                                        "textStyle":{
-                                                            "textColor_id": "PrimaryText"
-                                                        }
-                                                    },
-                                                    "items":[
-                                                        {
-                                                            "itemType": "label",
-                                                            "key": "cellSectionTitle",
-                                                            "style":{
-                                                                "textStyle":{
-                                                                    "textColor_id":"SubHeading",
-                                                                    "fontStyle_id": "cellTitle2"
-                                                                }
-                                                            }
-                                                        },
-                                                        {
-                                                            "itemType": "label",
-                                                            "key": "cellSectionCount",
-                                                            "itemSizeAttribute":{
-                                                                "padding":{
-                                                                    "top": 5
-                                                                }
-                                                            },
-                                                            "style":{
-                                                                "textStyle":{
-                                                                    "textColor_id":"PrimaryText",
-                                                                    "fontStyle_id": "cellDescription2"
-                                                                }
-                                                            }
-                                                        }
-    
-                                                    ]
-                                                }
-                                            
-                                            ]
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "segmentType": "sectionFooter",
-                        "patterns": [
-                            {
-                                "itemType": "vStack",
-                                "key": "sectionFooter",
-                                "style":{
-                                    "bgColor_id": "HeaderColor"
-                                },
-                                "itemSizeAttribute":{
-                                    "height":{
-                                        "value": 10,
-                                        "valueType": "staticValue"
-                                    }
-                                }
-
-                            }
-                        ]
-                    },
-                    {
-                        "segmentType": "listFooter",
-                        "patterns": [
-                            {
-                                "itemType": "vStack",
-                                "key": "listFooter",
-                                "style":{
-                                    "bgColor_id": "HeaderColor"
-                                }
-                            }
-                        ]
-                    }
-            ]
-        },
-        {
-            "r_uid": "kbSubCategoryScreen",
-            "uid": "kbSubCategoryListScreen",
-            "screenType": "list",
-            "segments":[
+            "segments": [
                 {
-                    "segmentType":"container",
+                    "segmentType": "container",
                     "style": {
                         "bgColor_id": "BGColor"
                     }
                 },
-                    {
-                        "segmentType": "topNavigationBar",
-                        "configuration": {
-                            "isNative": true,
-                            "prefersLargeTitles": false
-                        },
-                        "style": {
-                            "bgColor_id":"HeaderColor",
-                            "tintColor_id": "NavStyleColor"
-                        },
-                        "includePattern_id": "topNavigationBar_pattern"
-                        
+                {
+                    "segmentType": "topNavigationBar",
+                    "configuration": {
+                        "isNative": true,
+                        "prefersLargeTitles": false
                     },
+                    "style": {
+                        "bgColor_id": "HeaderColor",
+                        "tintColor_id": "NavStyleColor"
+                    },
+                    "includePattern_id": "topNavigationBar_pattern"
+                },
                 {
                     "segmentType": "search",
-                    "configuration":{
+                    "configuration": {
+                        "isNative": true,
+                        "hidesSearchBarWhenScrolling": true
+                    },
+                    "includePattern_id": "searchBar_pattern"
+                },
+                {
+                    "segmentType": "listHeader",
+                    "patterns": [
+                        {
+                            "itemType": "vStack",
+                            "key": "listHeader",
+                            "style": {
+                                "bgColor_id": "White"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "segmentType": "sectionHeader",
+                    "patterns": [
+                        {
+                            "itemType": "vStack",
+                            "key": "sectionHeader",
+                            "style": {
+                                "bgColor_id": "HeaderColor"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "segmentType": "listItem",
+                    "style": {
+                        "bgColor_id": "BGColor"
+                    },
+                    "patterns": [
+                        {
+                            "itemType": "vStack",
+                            "key": "categoryCell",
+                            "style": {
+                                "bgColor_id": "White"
+                            },
+                            "itemSizeAttribute": {
+                                "padding": {
+                                    "bottom": 8
+                                }
+                            },
+                            "items": [
+                                {
+                                    "itemType": "hStack",
+                                    "key": "container",
+                                    "style": {
+                                        "bgColor_id": "White"
+                                    },
+                                    "itemSizeAttribute": {
+                                        "padding": {
+                                            "all": 10
+                                        }
+                                    },
+                                    "actions": [
+                                        {
+                                            "actionKey": "cellSelect",
+                                            "uiActionType": "tap",
+                                            "navigationIDs": [
+                                                "kbCategoryScreen",
+                                                "kbArticleListScreen"
+                                            ]
+                                        }
+                                    ],
+                                    "items": [
+                                        {
+                                            "itemType": "zStack",
+                                            "key": "images",
+                                            "items": [
+                                                {
+                                                    "itemType": "imageView",
+                                                    "key": "cellImage",
+                                                    "itemSizeAttribute": {
+                                                        "width": {
+                                                            "value": 40,
+                                                            "valueType": "staticValue"
+                                                        },
+                                                        "height": {
+                                                            "value": 40,
+                                                            "valueType": "staticValue"
+                                                        }
+                                                    },
+                                                    "style": {
+                                                        "tintColor_id": "IconColor"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "itemType": "vStack",
+                                            "key": "devision",
+                                            "itemSizeAttribute": {
+                                                "padding": {
+                                                    "left": 50
+                                                }
+                                            },
+                                            "items": [
+                                                {
+                                                    "itemType": "label",
+                                                    "key": "cellTitle",
+                                                    "style": {
+                                                        "textStyle": {
+                                                            "textColor_id": "PrimaryText",
+                                                            "fontStyle_id": "cellTitle",
+                                                            "maxLines": 0
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "itemType": "label",
+                                                    "key": "cellDescription",
+                                                    "style": {
+                                                        "textStyle": {
+                                                            "textColor_id": "PrimaryText",
+                                                            "fontStyle_id": "cellDescription",
+                                                            "maxLines": 0
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "itemType": "hStack",
+                                                    "key": "articleAndSections",
+                                                    "itemSizeAttribute": {
+                                                        "padding": {
+                                                            "top": 10
+                                                        }
+                                                    },
+                                                    "items": [
+                                                        {
+                                                            "itemType": "vStack",
+                                                            "key": "cellArticles",
+                                                            "itemSizeAttribute": {
+                                                                "width": {
+                                                                    "value": 100,
+                                                                    "valueType": "staticValue"
+                                                                }
+                                                            },
+                                                            "style": {
+                                                                "textStyle": {
+                                                                    "textColor_id": "PrimaryText"
+                                                                }
+                                                            },
+                                                            "items": [
+                                                                {
+                                                                    "itemType": "label",
+                                                                    "key": "cellArticleTitle",
+                                                                    "style": {
+                                                                        "textStyle": {
+                                                                            "textColor_id": "SubHeading",
+                                                                            "fontStyle_id": "cellTitle2"
+                                                                        }
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "itemType": "label",
+                                                                    "key": "cellArticleCount",
+                                                                    "itemSizeAttribute": {
+                                                                        "padding": {
+                                                                            "top": 5
+                                                                        }
+                                                                    },
+                                                                    "style": {
+                                                                        "textStyle": {
+                                                                            "textColor_id": "PrimaryText",
+                                                                            "fontStyle_id": "cellDescription2"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "itemType": "vStack",
+                                                            "key": "cellSections",
+                                                            "itemSizeAttribute": {
+                                                                "width": {
+                                                                    "value": 60,
+                                                                    "valueType": "staticValue"
+                                                                },
+                                                                "padding": {
+                                                                    "left": 0
+                                                                }
+                                                            },
+                                                            "style": {
+                                                                "textStyle": {
+                                                                    "textColor_id": "PrimaryText"
+                                                                }
+                                                            },
+                                                            "items": [
+                                                                {
+                                                                    "itemType": "label",
+                                                                    "key": "cellSectionTitle",
+                                                                    "style": {
+                                                                        "textStyle": {
+                                                                            "textColor_id": "SubHeading",
+                                                                            "fontStyle_id": "cellTitle2"
+                                                                        }
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "itemType": "label",
+                                                                    "key": "cellSectionCount",
+                                                                    "itemSizeAttribute": {
+                                                                        "padding": {
+                                                                            "top": 5
+                                                                        }
+                                                                    },
+                                                                    "style": {
+                                                                        "textStyle": {
+                                                                            "textColor_id": "PrimaryText",
+                                                                            "fontStyle_id": "cellDescription2"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "segmentType": "sectionFooter",
+                    "patterns": [
+                        {
+                            "itemType": "vStack",
+                            "key": "sectionFooter",
+                            "style": {
+                                "bgColor_id": "HeaderColor"
+                            },
+                            "itemSizeAttribute": {
+                                "height": {
+                                    "value": 10,
+                                    "valueType": "staticValue"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "segmentType": "listFooter",
+                    "patterns": [
+                        {
+                            "itemType": "vStack",
+                            "key": "listFooter",
+                            "style": {
+                                "bgColor_id": "HeaderColor"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "segmentType": "bottomNavigationBar",
+                    "style": {
+                        "bgColor_id": "White"
+                    },
+                    "includePattern_id": "bottomBarPattern"
+                }
+            ]
+        },
+        {
+            "r_uid": "kbArticleListScreen",
+            "uid": "kbArticleListScreen",
+            "screenType": "list",
+            "segments": [
+                {
+                    "segmentType": "container",
+                    "style": {
+                        "bgColor_id": "BGColor"
+                    }
+                },
+                {
+                    "segmentType": "topNavigationBar",
+                    "configuration": {
+                        "isNative": true,
+                        "prefersLargeTitles": false
+                    },
+                    "style": {
+                        "bgColor_id": "HeaderColor",
+                        "tintColor_id": "NavStyleColor"
+                    },
+                    "includePattern_id": "topNavigationBar_pattern"
+                },
+                {
+                    "segmentType": "search",
+                    "configuration": {
                         "isNative": true
                     },
                     "includePattern_id": "searchBar_pattern"
                 },
-                    {
-                        "segmentType": "listHeader",
-                        "patterns": [
-                            {
-                                "itemType": "vStack",
-                                "key": "listheader",
-                                "style":{
-                                    "bgColor_id": "White"
-                                }
+                {
+                    "segmentType": "listHeader",
+                    "patterns": [
+                        {
+                            "itemType": "vStack",
+                            "key": "listheader",
+                            "style": {
+                                "bgColor_id": "White"
                             }
-                        ]
-                    },
-                    {
-                        "segmentType": "sectionHeader",
-                        "patterns": [
-                            {
-                                "itemType": "vStack",
-                                "key": "sectionheader",
-                                "style":{
-                                    "bgColor_id": "White"
-                                }
+                        }
+                    ]
+                },
+                {
+                    "segmentType": "sectionHeader",
+                    "patterns": [
+                        {
+                            "itemType": "vStack",
+                            "key": "sectionheader",
+                            "style": {
+                                "bgColor_id": "White"
                             }
-                        ]
-                    },
+                        }
+                    ]
+                },
                 {
                     "segmentType": "listItem",
-                    "style":{
+                    "style": {
                         "bgColor_id": "White"
                     },
-                    "configuration":{
+                    "configuration": {
                         "isNative": true
                     },
-                    "patterns":[
-                            {
-                           "itemType": "vStack",
-                           "key": "articleList",
-                           "items":[ 
-                            {
-
-                                "itemType":"hStack",
-                                "itemSizeAttribute":{
-                                    "padding":{
-                                        "all": 10
-                                    }
-                                },
-
-                                "items":[
-                                    {
-                                        "itemType": "zStack",
-                                        "key": "articleImageView",
-                                        "items":[
-                                            {
-                                                "itemType": "imageView",
-                                                "key": "articleImage",
-                                                "style":{
-                                                    "tintColor_id": "IconColor"
-                                                },
-                                                "itemSizeAttribute": {
-                                                    "height":{
-                                                        "value": 25,
-                                                        "valueType": "staticValue"
+                    "patterns": [
+                        {
+                            "itemType": "vStack",
+                            "key": "articleList",
+                            "actions": [
+                                {
+                                    "actionKey": "articleDetailscreen",
+                                    "uiActionType": "tap",
+                                    "navigationIDs": [
+                                        "kbArticleDetailScreen"
+                                    ]
+                                }
+                            ],
+                            "items": [
+                                {
+                                    "itemType": "hStack",
+                                    "itemSizeAttribute": {
+                                        "padding": {
+                                            "all": 10
+                                        }
+                                    },
+                                    "items": [
+                                        {
+                                            "itemType": "zStack",
+                                            "key": "articleImageView",
+                                            "items": [
+                                                {
+                                                    "itemType": "imageView",
+                                                    "key": "articleImage",
+                                                    "style": {
+                                                        "tintColor_id": "IconColor"
                                                     },
-                                                    "width": {
-                                                        "value": 25,
-                                                     "valueType": "staticValue"
+                                                    "itemSizeAttribute": {
+                                                        "height": {
+                                                            "value": 25,
+                                                            "valueType": "staticValue"
+                                                        },
+                                                        "width": {
+                                                            "value": 25,
+                                                            "valueType": "staticValue"
+                                                        }
                                                     }
                                                 }
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "itemType": "label",
-                                        "key": "articleLabel",
-                                        "itemSizeAttribute":{
-                                            "padding":{
-                                                "left": 35
-                                            }
+                                            ]
                                         },
-                                        "style":{
-                                            "textStyle":{
-                                                "textColor_id": "PrimaryText",
-                                                "fontStyle_id": "primary",
-                                                "maxLines":0
+                                        {
+                                            "itemType": "label",
+                                            "key": "articleLabel",
+                                            "itemSizeAttribute": {
+                                                "padding": {
+                                                    "left": 35
+                                                }
+                                            },
+                                            "style": {
+                                                "textStyle": {
+                                                    "textColor_id": "PrimaryText",
+                                                    "fontStyle_id": "primary",
+                                                    "maxLines": 0
+                                                }
                                             }
                                         }
-
-                                    }
-                                ]
-                            },
-                            
+                                    ]
+                                },
                                 {
                                     "itemType": "separatorView",
-                                    "itemSizeAttribute":{
-                                        "height":{
+                                    "itemSizeAttribute": {
+                                        "height": {
                                             "value": 1,
                                             "valueType": "staticValue"
                                         }
                                     },
-                                    "style":{
+                                    "style": {
                                         "bgColor_id": "SeparatorColor",
                                         "separatorType": "line"
                                     }
                                 }
-                        ]
-
+                            ]
                         }
                     ]
                 },
-                    {
-                        "segmentType": "sectionFooter",
-                        "patterns": [
-                            {
-                                "itemType": "vStack",
-                                "key": "sectionfooter",
-                                "style":{
-                                    "bgColor_id": "HeaderColor"
-                                }
-
+                {
+                    "segmentType": "sectionFooter",
+                    "patterns": [
+                        {
+                            "itemType": "vStack",
+                            "key": "sectionfooter",
+                            "style": {
+                                "bgColor_id": "HeaderColor"
                             }
-                        ]
+                        }
+                    ]
+                },
+                {
+                    "segmentType": "listFooter",
+                    "patterns": [
+                        {
+                            "itemType": "vStack",
+                            "key": "listfooter",
+                            "style": {
+                                "bgColor_id": "HeaderColor"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "segmentType": "bottomNavigationBar",
+                    "style": {
+                        "bgColor_id": "White"
                     },
-                    {
-                        "segmentType": "listFooter",
-                        "patterns": [
-                            {
-                                "itemType": "vStack",
-                                "key": "listfooter",
-                                "style":{
-                                    "bgColor_id": "HeaderColor"
+                    "includePattern_id": "bottomBarPattern"
+                }
+            ]
+        },
+        {
+            "r_uid": "kbArticleDetailScreen",
+            "uid": "kbArticleDetailScreen",
+            "screenType": "detail",
+            "segments": [
+                {
+                    "segmentType": "topNavigationBar",
+                    "configuration": {
+                        "isNative": true
+                    },
+                    "style": {
+                        "bgColor_id": "HeaderColor",
+                        "tintColor_id": "NavStyleColor"
+                    },
+                    "includePattern_id": "topNavigationBar_pattern"
+                },
+                {
+                    "segmentType": "container",
+                    "style": {
+                        "bgColor_id": "BGColor"
+                    },
+                    "patterns": [
+                        {
+                            "itemType": "vStack",
+                            "itemSizeAttribute": {
+                                "padding": {
+                                    "all": 10
                                 }
-                            }
-                        ]
-                    }
+                            },
+                            "items": [
+                                {
+                                    "itemType": "label",
+                                    "key": "articleTitle",
+                                    "style": {
+                                        "textStyle": {
+                                            "textColor_id": "PrimaryText",
+                                            "fontStyle_id": "articleTitle"
+                                        }
+                                    }
+                                },
+                                {
+                                    "itemType": "webView",
+                                    "key": "articleWebView",
+                                    "style": {
+                                        "scrollStyle": {
+                                            "isScrollEnabled": true,
+                                            "isShowVerticalScrollIndicator": false
+                                        }
+                                    },
+                                    "itemSizeAttribute": {
+                                        "height": {
+                                            "value": 0,
+                                            "valueType": "wrapContent"
+                                        },
+                                        "padding": {
+                                            "top": 8,
+                                            "bottom": 8
+                                        }
+                                    }
+                                },
+                                {
+                                    "itemType": "label",
+                                    "key": "articleCreatedDate",
+                                    "style": {
+                                        "textStyle": {
+                                            "textColor_id": "IconColor",
+                                            "fontStyle_id": "articleDate"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "segmentType": "bottomNavigationBar",
+                    "style": {
+                        "bgColor_id": "White"
+                    },
+                    "patterns": [
+                        {
+                            "itemType": "vStack",
+                            "itemSizeAttribute": {
+                                "height": {
+                                    "value": 75,
+                                    "valueType": "staticValue"
+                                }
+                            },
+                            "items": [
+                                {
+                                    "itemType": "separatorView",
+                                    "itemSizeAttribute": {
+                                        "height": {
+                                            "value": 2,
+                                            "valueType": "staticValue"
+                                        }
+                                    },
+                                    "style": {
+                                        "separatorType": "line",
+                                        "bgColor_id": "SeparatorColor"
+                                    }
+                                },
+                                {
+                                    "itemType": "hStack",
+                                    "style": {
+                                        "textStyle": {
+                                            "alignment": "center"
+                                        }
+                                    },
+                                    "itemSizeAttribute": {
+                                        "height": {
+                                            "value": 40,
+                                            "valueType": "staticValue"
+                                        }
+                                    },
+                                    "items": [
+                                        {
+                                            "itemType": "button",
+                                            "key": "likeButton",
+                                            "style": {
+                                                "tintColor_id": "HeaderColor"
+                                            },
+                                            "itemSizeAttribute":{
+                                                "width":{
+                                                    "value":33,
+                                                    "valueType": "stretchToParent"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "itemType": "separatorView",
+                                            "itemSizeAttribute": {
+                                                "width": {
+                                                    "value": 2,
+                                                    "valueType": "staticValue"
+                                                }
+                                            },
+                                            "style": {
+                                                "separatorType": "line",
+                                                "bgColor_id": "SeparatorColor"
+                                            }
+                                        },
+                                        {
+                                            "itemType": "button",
+                                            "key": "dislikeButton",
+                                            "style": {
+                                                "tintColor_id": "Red",
+                                                "textStyle": {
+                                                    "alignment": "center"
+                                                }
+                                            },
+                                            "itemSizeAttribute":{
+                                                "width":{
+                                                    "value":33,
+                                                    "valueType": "stretchToParent"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "itemType": "separatorView",
+                                            "itemSizeAttribute": {
+                                                "width": {
+                                                    "value": 2,
+                                                    "valueType": "staticValue"
+                                                }
+                                            },
+                                            "style": {
+                                                "separatorType": "line",
+                                                "bgColor_id": "SeparatorColor"
+                                            }
+                                        },
+                                        {
+                                            "itemType": "button",
+                                            "key": "moreButton",
+                                            "style": {
+                                                "tintColor_id": "Black"
+                                            },
+                                            "itemSizeAttribute":{
+                                                "width":{
+                                                    "value":33,
+                                                    "valueType": "stretchToParent"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "itemType": "separatorView",
+                                    "itemSizeAttribute": {
+                                        "height": {
+                                            "value": 2,
+                                            "valueType": "staticValue"
+                                        }
+                                    },
+                                    "style": {
+                                        "separatorType": "line",
+                                        "bgColor_id": "SeparatorColor"
+                                    }
+                                },
+                                {
+                                    "itemType": "label",
+                                    "key": "bottomBarTitle",
+                                    "itemSizeAttribute": {
+                                        "padding": {
+                                            "top": 6
+                                        }
+                                    },
+                                    "style": {
+                                        "textStyle": {
+                                            "alignment": "center",
+                                            "textColor_id": "SecondaryText",
+                                            "fontStyle_id": "bottomText"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
             ]
         }
     ]

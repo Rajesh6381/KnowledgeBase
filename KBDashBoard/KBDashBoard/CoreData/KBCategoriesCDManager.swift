@@ -22,17 +22,17 @@ class KBCategoriesCDManager:CoreDataManager<CoreDataKBCategoriesModal>,CDManager
     
     
    
-    var interactor: Notify?
+    weak var interactor: Notify?
 
     init() {
         super.init(entity: "CoreDataKBCategoriesModal")
-        
         let sort = NSSortDescriptor(key: "id", ascending: true)
         request.sortDescriptors = [sort]
         
         fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         fetchResultController.delegate = self
     }
+  
     
     func createCategoryEntity(category: KBCategoriesModal) {
         print("creating")
@@ -88,7 +88,7 @@ class KBCategoriesCDManager:CoreDataManager<CoreDataKBCategoriesModal>,CDManager
 
     // sync data to core data
     func syncData<T>(modal: [T], from path: KBCategoryPath){
-        
+        print("syncing")
         guard let data = modal as? [KBCategoriesModal] else{
             return
         }
@@ -129,7 +129,7 @@ class KBCategoriesCDManager:CoreDataManager<CoreDataKBCategoriesModal>,CDManager
     func deleteData(with ids: [String]){
         
         do{
-           let _ = try context.fetch(request).map({data in
+           let _ = try persistentContainer.fetch(request).map({data in
                 if !ids.contains(data.id){
                     context.delete(data)
                 }

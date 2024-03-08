@@ -6,7 +6,7 @@
 //
 
 import Foundation
-protocol Notify{
+protocol Notify: AnyObject{
     func notifications(table: TableUpdate)
 }
 
@@ -17,6 +17,7 @@ class KBCategoryInteractor: Notify{
     var coreData: CDManager?
     
     func notifications(table: TableUpdate){
+        
         view?.notify(update: table)
     }
     
@@ -53,6 +54,7 @@ class KBCategoryInteractor: Notify{
         
         let hasData = getCDdata(predicatePath: kbPath)
         NetworkManager.shared.request(endPoint: kbPath, modalType: DataModal<KBCategoriesModal>.self){data in
+            
             guard let coreData =  data?.data else{
                 return
             }
@@ -68,7 +70,7 @@ class KBCategoryInteractor: Notify{
         
         let hasData = getCDdata(predicatePath: kbPath)
         
-        NetworkManager.shared.request(endPoint: kbPath, modalType: KBCategoriesModal.self){kbcategories in
+        NetworkManager.shared.request(endPoint: kbPath, modalType: KBCategoriesModal.self){ kbcategories in
             guard let coreData =  kbcategories else{
                 return
             }
@@ -84,7 +86,7 @@ class KBCategoryInteractor: Notify{
     
     func processArticle(with kbPath: KBCategoryPath){
         let hasData = getCDdata(predicatePath: kbPath)
-        NetworkManager.shared.request(endPoint: kbPath, modalType: DataModal<KBArticlesModal>.self){ data in
+        NetworkManager.shared.request(endPoint: kbPath, modalType: DataModal<KBArticlesModal>.self){data in
             
             guard let article =  data?.data else{
                 return
@@ -100,14 +102,16 @@ class KBCategoryInteractor: Notify{
     func processArticleDetails(with kbPath: KBCategoryPath){
         let hasData = getCDdata(predicatePath: kbPath)
         
-        NetworkManager.shared.request(endPoint: kbPath, modalType: KBArticlesModal.self){ data in
+        NetworkManager.shared.request(endPoint: kbPath, modalType: KBArticlesModal.self){data in
             guard let articleDetail =  data else{
                 return
             }
             print(articleDetail)
             self.coreData?.syncData(modal: [articleDetail], from: kbPath)
             print("update ")
+            
             //self.getCDdata(predicatePath: kbPath)
+            
             
         }
     }

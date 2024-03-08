@@ -50,11 +50,6 @@ class KBCategoryViewController: CommonViewController, UITableViewDelegate, UITab
         
       }
     
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footer  = UIView()
-        footer.backgroundColor = .clear
-        return footer
-    }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -105,6 +100,7 @@ class KBCategoryViewController: CommonViewController, UITableViewDelegate, UITab
     
     override func viewWillAppear(_ animated: Bool){
         self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.isToolbarHidden = false
         //hide the table view
         if self.categories.isNil{
             self.tableView.isHidden = true
@@ -119,7 +115,6 @@ extension KBCategoryViewController: SetProtocol{
         if self.categories?.fetchedObjects?.count != 0{
             print("done")
             self.categories =  categoriesModal as? NSFetchedResultsController<CoreDataKBCategoriesModal>
-            print(self.categories?.fetchedObjects?.count)
             self.tableView.reloadData()
         }else{
             self.categories =  categoriesModal as? NSFetchedResultsController<CoreDataKBCategoriesModal>
